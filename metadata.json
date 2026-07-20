@@ -1,0 +1,6 @@
+{
+  "name": "AI Search Research Assistant",
+  "description": "Enter queries to retrieve verifiable, source-backed, and structured intelligent research reports. Supports multi-page synthesis, fact vs. opinion classification, credibility analysis, and PDF export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
