@@ -1,5 +1,7 @@
 # freetools.ai.studio
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/rainco2008/freetools.ai.studio)
+
 English | [简体中文](README.zh-CN.md)
 
 An open, full-stack AI tools workspace powered by Google Gemini and designed to run in Google AI Studio.
@@ -42,13 +44,7 @@ The frontend calls the server-side `/api/bouquet/image` endpoint. The flower cat
 
 ## One-click deployment entry
 
-The repository includes a combined Google Cloud deployment badge for this deployment section:
-
-```text
-public/branding/google-ai-studio-deploy-badge.png
-```
-
-![Google AI Studio deployment badge](public/branding/google-ai-studio-deploy-badge.png)
+Deploy this repository directly to Google Cloud Run with the button above.
 
 The button opens Google AI Studio Apps. To publish this repository:
 
@@ -117,8 +113,7 @@ npm run start
 
 ```text
 ├── public/
-│   ├── flowers.json
-│   └── branding/google-ai-studio-deploy-badge.png
+│   └── flowers.json
 ├── server.ts                         # Express server and Gemini API routes
 ├── vite.config.ts                    # Vite and Tailwind configuration
 ├── package.json                      # Dependencies and scripts

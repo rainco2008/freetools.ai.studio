@@ -1,5 +1,7 @@
 # freetools.ai.studio
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run/?git_repo=https://github.com/rainco2008/freetools.ai.studio)
+
 [English](README.md) | 简体中文
 
 一个由 Google Gemini 驱动的全栈 AI 工具平台，运行在 Google AI Studio 环境中。
@@ -44,11 +46,8 @@ Bouquet Generator 是一个 React 创意 Studio 应用，由原 Astro/Vue 项目
 
 仓库在本部署说明中包含合成后的 Google Cloud 部署图标：
 
-```text
-public/branding/google-ai-studio-deploy-badge.png
-```
+顶部按钮可以将本仓库直接部署到 Google Cloud Run。
 
-![Google AI Studio 部署图标](public/branding/google-ai-studio-deploy-badge.png)
 
 按钮会打开 Google AI Studio。发布本项目的步骤如下：
 
@@ -117,8 +116,7 @@ npm run start
 
 ```text
 ├── public/
-│   ├── flowers.json
-│   └── branding/google-ai-studio-deploy-badge.png
+│   └── flowers.json
 ├── server.ts                         # Express 服务端与 Gemini API 路由
 ├── vite.config.ts                    # Vite 与 Tailwind 配置
 ├── package.json                      # 依赖和脚本
