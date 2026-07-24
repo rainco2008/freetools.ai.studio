@@ -10,6 +10,7 @@ import ReportRenderer from "./ReportRenderer";
 import HistorySidebar from "./HistorySidebar";
 import { SavedReport, ResearchReport, GroundingSource } from "../types";
 import DevelopmentToolsWorkbench from "./DevelopmentToolsWorkbench";
+import BouquetGenerator from "./BouquetGenerator";
 
 // Types for individual sandbox apps
 interface StudioAppSandboxProps {
@@ -118,6 +119,10 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
 
   if (appId === "development-tools") {
     return <DevelopmentToolsWorkbench />;
+  }
+
+  if (appId === "bouquet-generator") {
+    return <BouquetGenerator />;
   }
 
   // --- RENDERING ROUTE A: ORIGINAL SEARCH GROUNDING RESEARCH BRIEF (FactLens) ---

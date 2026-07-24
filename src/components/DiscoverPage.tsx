@@ -51,7 +51,7 @@ export default function DiscoverPage() {
                     {studioApps.map(app => (
                       <a 
                         key={app.id}
-                        href={`#/studio/${app.id}`}
+                        href={app.id === "bouquet-generator" ? "/bouquetgenerator" : `#/studio/${app.id}`}
                         className="flex items-center justify-between text-xs font-serif font-bold text-[#1A1A1A] hover:text-[#E64833] group transition-colors"
                       >
                         <span>{app.name}</span>
