@@ -1,3 +1,4 @@
+import { DEVELOPMENT_TOOL_CATALOG } from "./components/development-tools/catalog";
 export interface Tool {
   slug: string;
   name: string;
@@ -73,10 +74,19 @@ export const STUDIO_APPS = [
     tagline: "Context-Aware Cultural Stylist & Translator",
     description: "Shuns literal word-for-word translation. Recognizes professional, technical, or creative sectors to realign voices across 40+ global languages with local nuance.",
     iconName: "ExternalLink",
+  },
+  {
+    id: "development-tools",
+    name: "IT Tools Development Workbench",
+    category: "Development",
+    tagline: "34 local-first developer utilities in one workspace",
+    description: "A React-native workbench containing the complete IT Tools collection, migrated for the newfreetools Google AI Studio project.",
+    iconName: "Terminal",
   }
 ];
 
 export const TOOLS_DATABASE: Tool[] = [
+  ...DEVELOPMENT_TOOL_CATALOG,
   // Cognitive Writing Tools
   {
     slug: "copy-ai",

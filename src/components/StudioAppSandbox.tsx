@@ -9,6 +9,7 @@ import LoadingOverlay from "./LoadingOverlay";
 import ReportRenderer from "./ReportRenderer";
 import HistorySidebar from "./HistorySidebar";
 import { SavedReport, ResearchReport, GroundingSource } from "../types";
+import DevelopmentToolsWorkbench from "./DevelopmentToolsWorkbench";
 
 // Types for individual sandbox apps
 interface StudioAppSandboxProps {
@@ -113,6 +114,10 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
         </a>
       </div>
     );
+  }
+
+  if (appId === "development-tools") {
+    return <DevelopmentToolsWorkbench />;
   }
 
   // --- RENDERING ROUTE A: ORIGINAL SEARCH GROUNDING RESEARCH BRIEF (FactLens) ---
@@ -735,7 +740,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                       <div className="border border-[#D1CEC7] bg-[#FCFAF7] p-4 space-y-3">
                         <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                           <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                            🎯 Catchy Headlines
+                            ðŸŽ¯ Catchy Headlines
                           </span>
                           <button 
                             onClick={() => handleCopyToClipboard(result.headlines?.join("\n") || "", "headlines")}
@@ -758,7 +763,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                       <div className="border border-[#D1CEC7] bg-[#FCFAF7] p-4 space-y-3">
                         <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                           <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                            ⚡ Golden Hooks
+                            âš¡ Golden Hooks
                           </span>
                           <button 
                             onClick={() => handleCopyToClipboard(result.hooks?.join("\n") || "", "hooks")}
@@ -788,7 +793,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          📝 Full Copy Core Sections
+                          ðŸ“ Full Copy Core Sections
                         </span>
                         <button 
                           onClick={() => {
@@ -818,12 +823,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Strategy Advice */}
                     <div className="space-y-3 pt-2">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        📈 Strategic Advice
+                        ðŸ“ˆ Strategic Advice
                       </span>
                       <ul className="space-y-2 text-xs">
                         {result.strategicAdvice?.map((adv: string, i: number) => (
                           <li key={i} className="flex gap-2 items-start text-[#5C5955]">
-                            <span className="text-[#E64833] font-bold">✓</span>
+                            <span className="text-[#E64833] font-bold">âœ“</span>
                             <span>{adv}</span>
                           </li>
                         ))}
@@ -849,7 +854,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Competitor Voids list */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        🕵️ Content Voids sur Competitors
+                        ðŸ•µï¸ Content Voids sur Competitors
                       </span>
                       <div className="space-y-3 text-xs">
                         {result.competitorVoids?.map((voidItem: any, idx: number) => (
@@ -871,7 +876,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Keyword Opportunities */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        📈 Keyword Opportunities
+                        ðŸ“ˆ Keyword Opportunities
                       </span>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {result.keywordOpportunities?.map((kw: any, idx: number) => (
@@ -905,7 +910,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Plan */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        🗺️ Actionable Content Plan
+                        ðŸ—ºï¸ Actionable Content Plan
                       </span>
                       <ul className="space-y-2.5 text-xs text-[#5C5955]">
                         {result.contentStrategyPlan?.map((plan: string, i: number) => (
@@ -934,7 +939,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-3">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          💻 Sandbox File Tree
+                          ðŸ’» Sandbox File Tree
                         </span>
                         {result.codeBlocks?.[activeCodeTabIndex] && (
                           <button 
@@ -958,7 +963,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                                 : "text-[#5C5955] hover:bg-[#F5F2EC]"
                             }`}
                           >
-                            📄 {block.filename}
+                            ðŸ“„ {block.filename}
                           </button>
                         ))}
                       </div>
@@ -981,7 +986,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="grid sm:grid-cols-2 gap-5 pt-2">
                       <div className="space-y-2.5">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block border-b border-[#D1CEC7] pb-1">
-                          🛠️ Integration Steps
+                          ðŸ› ï¸ Integration Steps
                         </span>
                         <ul className="space-y-1.5 text-xs text-[#5C5955]">
                           {result.implementationGuide?.map((g: string, i: number) => (
@@ -995,12 +1000,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
 
                       <div className="space-y-2.5">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block border-b border-[#D1CEC7] pb-1">
-                          💡 Best Practices
+                          ðŸ’¡ Best Practices
                         </span>
                         <ul className="space-y-1.5 text-xs text-[#5C5955]">
                           {result.bestPractices?.map((bp: string, i: number) => (
                             <li key={i} className="flex gap-1.5 items-start">
-                              <span className="text-[#E64833] font-bold">✓</span>
+                              <span className="text-[#E64833] font-bold">âœ“</span>
                               <span>{bp}</span>
                             </li>
                           ))}
@@ -1025,7 +1030,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* findings audit table */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ⚠️ Critical Auditor Findings
+                        âš ï¸ Critical Auditor Findings
                       </span>
                       <div className="space-y-3">
                         {result.findings?.map((find: any, idx: number) => (
@@ -1054,7 +1059,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Metrics Key KPIs */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        📊 Structured Metrics Extracted
+                        ðŸ“Š Structured Metrics Extracted
                       </span>
                       <div className="grid gap-3 sm:grid-cols-3">
                         {result.structuredMetrics?.map((metric: any, idx: number) => (
@@ -1070,7 +1075,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Overall Risk & Remediation */}
                     <div className="border border-[#1A1A1A] bg-[#F5F2EC] p-4 space-y-3 text-xs">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                        🔒 Comprehensive Risk Assessment & Roadmap
+                        ðŸ”’ Comprehensive Risk Assessment & Roadmap
                       </span>
                       <div className="space-y-3 font-serif">
                         <p className="text-[#1A1A1A] leading-relaxed italic">{result.riskAssessment}</p>
@@ -1117,7 +1122,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-3">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          🏆 Perfect Localized Translation
+                          ðŸ† Perfect Localized Translation
                         </span>
                         <button 
                           onClick={() => handleCopyToClipboard(result.translatedText || "", "translation")}
@@ -1135,7 +1140,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Cultural notes */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        📖 Localized Terminology & Idiom Conversions
+                        ðŸ“– Localized Terminology & Idiom Conversions
                       </span>
                       <div className="space-y-2 text-xs">
                         {result.culturalLocalizationNotes?.map((note: any, idx: number) => (
@@ -1152,7 +1157,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Alternative tone variations */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ⚖️ Alternative Tone Variations
+                        âš–ï¸ Alternative Tone Variations
                       </span>
                       <div className="space-y-3 text-xs">
                         {result.alternativeToneVariations?.map((variant: any, idx: number) => (
