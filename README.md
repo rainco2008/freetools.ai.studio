@@ -143,3 +143,5 @@ This project is distributed under the GPLv3 License.
 
 This project is a derivative of [CorentinTh/it-tools](https://github.com/CorentinTh/it-tools) by Corentin Thomasset, modified starting July 24, 2026, to migrate from Vue to React and add Google AI Studio integrations. It remains licensed under the GNU General Public License v3.0 (GPLv3).
 
+This project is a React-based rewrite of the open-source project ai-bouquet-generator (originally created by Jen Looper / cloudinary-devs) （https://github.com/cloudinary-devs/ai-bouquet-generator）.
+
