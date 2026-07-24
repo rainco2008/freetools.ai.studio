@@ -42,11 +42,13 @@ The frontend calls the server-side `/api/bouquet/image` endpoint. The flower cat
 
 ## One-click deployment entry
 
-The application header includes a **Deploy with Google AI Studio** button using the combined Google Cloud deployment badge at:
+The repository includes a combined Google Cloud deployment badge for this deployment section:
 
 ```text
 public/branding/google-ai-studio-deploy-badge.png
 ```
+
+![Google AI Studio deployment badge](public/branding/google-ai-studio-deploy-badge.png)
 
 The button opens Google AI Studio Apps. To publish this repository:
 
