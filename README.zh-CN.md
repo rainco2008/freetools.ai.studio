@@ -140,4 +140,5 @@ npm run start
 
 ## 许可证
 
-本项目基于 MIT 许可证发布。
+本项目基于 GPLv3 许可证发布。
+本项目是基于开源项目 it-tools（https://github.com/CorentinTh/it-tools）的 React 重构版本。
