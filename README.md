@@ -137,4 +137,9 @@ npm run start
 
 ## License
 
-This project is distributed under the MIT License.
+This project is distributed under the GPLv3 License.
+
+## Credits and Attribution
+
+This project is a derivative of [CorentinTh/it-tools](https://github.com/CorentinTh/it-tools) by Corentin Thomasset, modified starting July 24, 2026, to migrate from Vue to React and add Google AI Studio integrations. It remains licensed under the GNU General Public License v3.0 (GPLv3).
+
