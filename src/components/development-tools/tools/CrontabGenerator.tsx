@@ -122,7 +122,7 @@ export const CrontabGenerator: React.FC = () => {
           <p className="text-xs text-rose-500 font-medium">{error}</p>
         ) : (
           <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            ðŸ’¬ {humanText}
+            {humanText}
           </p>
         )}
       </div>

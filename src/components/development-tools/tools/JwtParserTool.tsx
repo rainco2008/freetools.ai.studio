@@ -75,7 +75,7 @@ export const JwtParserTool: React.FC = () => {
             </div>
             {expDate && (
               <div className={`p-2 rounded text-xs ${isExpired ? 'bg-rose-500/10 text-rose-600' : 'bg-emerald-500/10 text-emerald-600'}`}>
-                {isExpired ? 'ÃƒÂ¢Ã…Â¡Ã‚Â ÃƒÂ¯Ã‚Â¸Ã‚Â Token Expired' : 'ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ Token Active'} - Expiration: {expDate}
+                {isExpired ? 'Token Expired' : 'Token Active'} - Expiration: {expDate}
               </div>
             )}
             <pre className="p-3 bg-slate-50 dark:bg-slate-900 rounded font-mono text-xs overflow-x-auto text-slate-800 dark:text-slate-200">

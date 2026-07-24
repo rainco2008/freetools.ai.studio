@@ -39,7 +39,7 @@ const definitions: Array<[string, string, string, string, string[]]> = [
 
 export const DEVELOPMENT_TOOL_CATALOG = definitions.map(([id, name, subCategory, description, features]) => ({
   slug: `it-tools-${id}`,
-  name: `IT Tools ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ${name}`,
+  name: `IT Tools - ${name}`,
   category: "Development" as const,
   subCategory,
   industryAnchor: "IT Tools",

@@ -110,7 +110,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
         <AlertCircle className="h-10 w-10 text-[#E64833] mx-auto" />
         <h4 className="text-lg font-serif font-bold text-[#1A1A1A]">Sandbox Engine Mismatch</h4>
         <p className="text-xs text-[#8C8984] font-serif">This Studio app engine is not ready or has not been assigned a valid identifier.</p>
-        <a href="#/" className="inline-block px-4 py-2 border border-[#1A1A1A] bg-black text-white text-[9px] uppercase font-bold tracking-widest">
+        <a href="/" className="inline-block px-4 py-2 border border-[#1A1A1A] bg-black text-white text-[9px] uppercase font-bold tracking-widest">
           Back to Catalog Dashboard
         </a>
       </div>
@@ -382,7 +382,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
       {/* 1. Header with Breadcrumbs */}
       <div className="border-b border-[#D1CEC7] pb-6 space-y-3">
         <div className="flex items-center gap-2">
-          <a href="#/" className="text-xs text-[#8C8984] hover:text-[#1A1A1A] font-mono uppercase tracking-widest">
+          <a href="/" className="text-xs text-[#8C8984] hover:text-[#1A1A1A] font-mono uppercase tracking-widest">
             Studio Hub
           </a>
           <span className="text-[#8C8984] font-mono text-[10px]">/</span>
@@ -745,7 +745,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                       <div className="border border-[#D1CEC7] bg-[#FCFAF7] p-4 space-y-3">
                         <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                           <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                            ðŸŽ¯ Catchy Headlines
+                            Catchy Headlines
                           </span>
                           <button 
                             onClick={() => handleCopyToClipboard(result.headlines?.join("\n") || "", "headlines")}
@@ -798,7 +798,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          ðŸ“ Full Copy Core Sections
+                          Full Copy Core Sections
                         </span>
                         <button 
                           onClick={() => {
@@ -828,7 +828,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Strategy Advice */}
                     <div className="space-y-3 pt-2">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ“ˆ Strategic Advice
+                        Strategic Advice
                       </span>
                       <ul className="space-y-2 text-xs">
                         {result.strategicAdvice?.map((adv: string, i: number) => (
@@ -859,7 +859,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Competitor Voids list */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ•µï¸ Content Voids sur Competitors
+                        Content Voids vs. Competitors
                       </span>
                       <div className="space-y-3 text-xs">
                         {result.competitorVoids?.map((voidItem: any, idx: number) => (
@@ -881,7 +881,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Keyword Opportunities */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ“ˆ Keyword Opportunities
+                        Keyword Opportunities
                       </span>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {result.keywordOpportunities?.map((kw: any, idx: number) => (
@@ -915,7 +915,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Plan */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ—ºï¸ Actionable Content Plan
+                        Actionable Content Plan
                       </span>
                       <ul className="space-y-2.5 text-xs text-[#5C5955]">
                         {result.contentStrategyPlan?.map((plan: string, i: number) => (
@@ -944,7 +944,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-3">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          ðŸ’» Sandbox File Tree
+                          Sandbox File Tree
                         </span>
                         {result.codeBlocks?.[activeCodeTabIndex] && (
                           <button 
@@ -968,7 +968,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                                 : "text-[#5C5955] hover:bg-[#F5F2EC]"
                             }`}
                           >
-                            ðŸ“„ {block.filename}
+                            {block.filename}
                           </button>
                         ))}
                       </div>
@@ -991,7 +991,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="grid sm:grid-cols-2 gap-5 pt-2">
                       <div className="space-y-2.5">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block border-b border-[#D1CEC7] pb-1">
-                          ðŸ› ï¸ Integration Steps
+                          Integration Steps
                         </span>
                         <ul className="space-y-1.5 text-xs text-[#5C5955]">
                           {result.implementationGuide?.map((g: string, i: number) => (
@@ -1005,7 +1005,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
 
                       <div className="space-y-2.5">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A1A1A] block border-b border-[#D1CEC7] pb-1">
-                          ðŸ’¡ Best Practices
+                          Best Practices
                         </span>
                         <ul className="space-y-1.5 text-xs text-[#5C5955]">
                           {result.bestPractices?.map((bp: string, i: number) => (
@@ -1064,7 +1064,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Metrics Key KPIs */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ“Š Structured Metrics Extracted
+                        Structured Metrics Extracted
                       </span>
                       <div className="grid gap-3 sm:grid-cols-3">
                         {result.structuredMetrics?.map((metric: any, idx: number) => (
@@ -1080,7 +1080,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Overall Risk & Remediation */}
                     <div className="border border-[#1A1A1A] bg-[#F5F2EC] p-4 space-y-3 text-xs">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                        ðŸ”’ Comprehensive Risk Assessment & Roadmap
+                        Comprehensive Risk Assessment & Roadmap
                       </span>
                       <div className="space-y-3 font-serif">
                         <p className="text-[#1A1A1A] leading-relaxed italic">{result.riskAssessment}</p>
@@ -1127,7 +1127,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     <div className="space-y-3">
                       <div className="flex justify-between items-center border-b border-[#D1CEC7] pb-1.5">
                         <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider">
-                          ðŸ† Perfect Localized Translation
+                          Perfect Localized Translation
                         </span>
                         <button 
                           onClick={() => handleCopyToClipboard(result.translatedText || "", "translation")}
@@ -1145,7 +1145,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     {/* Cultural notes */}
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1.5">
-                        ðŸ“– Localized Terminology & Idiom Conversions
+                          Localized Terminology & Idiom Conversions
                       </span>
                       <div className="space-y-2 text-xs">
                         {result.culturalLocalizationNotes?.map((note: any, idx: number) => (
