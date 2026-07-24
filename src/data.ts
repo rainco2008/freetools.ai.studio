@@ -82,14 +82,6 @@ export const STUDIO_APPS = [
     tagline: "34 local-first developer utilities in one workspace",
     description: "A React-native workbench containing the complete IT Tools collection, migrated for the newfreetools Google AI Studio project.",
     iconName: "Terminal",
-  },
-  {
-    id: "bouquet-generator",
-    name: "Bouquet Generator",
-    category: "Cognitive Writing",
-    tagline: "Language of Flowers & AI Bouquet Studio",
-    description: "Compose a meaningful flower bouquet and generate a Victorian tussie-mussie image with Gemini.",
-    iconName: "Flower2",
   }
 ];
 
