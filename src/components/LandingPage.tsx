@@ -122,7 +122,7 @@ export default function LandingPage() {
           {STUDIO_APPS.map((app) => (
             <a
               key={app.id}
-              href={`#/studio/${app.id}`}
+              href={app.id === "bouquet-generator" ? "/bouquetgenerator" : `#/studio/${app.id}`}
               className="flex flex-col justify-between border border-[#1A1A1A] bg-[#F5F2EC] p-5 hover:bg-[#EAE6DF] transition-all group hover:-translate-y-0.5"
             >
               <div className="space-y-3">

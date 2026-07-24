@@ -34,6 +34,38 @@ function getGeminiClient(): GoogleGenAI {
   return aiClient;
 }
 
+// Generate a bouquet image without exposing GEMINI_API_KEY to the browser.
+app.post("/api/bouquet/image", async (req, res) => {
+  try {
+    const flowers = Array.isArray(req.body?.flowers)
+      ? req.body.flowers.filter((flower: unknown): flower is string => typeof flower === "string").slice(0, 12)
+      : [];
+
+    if (!flowers.length) {
+      return res.status(400).json({ error: "Please select at least one flower." });
+    }
+
+    const ai = getGeminiClient();
+    const prompt = `Create a refined Victorian tussie-mussie bouquet arranged as a botanical still-life on a warm ivory background. Use these flowers exactly as the symbolic bouquet: ${flowers.join(", ")}. Show an elegant hand-tied bouquet with natural stems, detailed petals, soft editorial lighting, subtle vintage paper texture, and no text, labels, hands, or extra objects.`;
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash-image",
+      contents: prompt,
+    });
+
+    const parts = response.candidates?.[0]?.content?.parts || [];
+    const imagePart = parts.find((part: any) => part.inlineData?.data);
+    if (!imagePart?.inlineData?.data) {
+      return res.status(502).json({ error: "Gemini did not return a bouquet image." });
+    }
+
+    const mimeType = imagePart.inlineData.mimeType || "image/png";
+    res.json({ imageUrl: `data:${mimeType};base64,${imagePart.inlineData.data}` });
+  } catch (error: any) {
+    console.error("Bouquet image API error:", error);
+    res.status(500).json({ error: error.message || "Bouquet image generation failed." });
+  }
+});
+
 // API endpoint for research generation
 app.post("/api/research", async (req, res) => {
   try {

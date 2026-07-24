@@ -147,6 +147,10 @@ export default function App() {
   };
 
   const getStudioAppId = () => {
+    const pathname = window.location.pathname.replace(/\/$/, "");
+    if (pathname === "/bouquetgenerator") {
+      return "bouquet-generator";
+    }
     if (currentHash.startsWith("#/studio/")) {
       const parts = currentHash.replace("#/studio/", "").split("?");
       return parts[0];
