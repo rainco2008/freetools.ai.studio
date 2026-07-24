@@ -104,12 +104,12 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
             {/* Pros */}
             <div className="space-y-3 bg-[#FCFAF7] border border-[#D1CEC7] p-5">
               <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                ✔ ADVANTAGES / GENERAL PROS
+                âœ” ADVANTAGES / GENERAL PROS
               </span>
               <ul className="space-y-2.5 text-xs text-[#5C5955] font-serif">
                 {tool.pros.map((pro, i) => (
                   <li key={i} className="flex items-start gap-2 leading-relaxed">
-                    <span className="text-[#E64833] font-bold shrink-0">✓</span>
+                    <span className="text-[#E64833] font-bold shrink-0">âœ“</span>
                     <span>{pro}</span>
                   </li>
                 ))}
@@ -119,12 +119,12 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
             {/* Cons */}
             <div className="space-y-3 bg-[#FCFAF7] border border-[#D1CEC7] p-5">
               <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                ✘ DISADVANTAGES / MAJOR CONS
+                âœ˜ DISADVANTAGES / MAJOR CONS
               </span>
               <ul className="space-y-2.5 text-xs text-[#5C5955] font-serif">
                 {tool.cons.map((con, i) => (
                   <li key={i} className="flex items-start gap-2 leading-relaxed">
-                    <span className="text-[#8C8984] font-bold shrink-0">⚠</span>
+                    <span className="text-[#8C8984] font-bold shrink-0">âš </span>
                     <span>{con}</span>
                   </li>
                 ))}
@@ -208,7 +208,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
               </div>
 
               <a
-                href={`#/studio/${studioAppAlternative.id}`}
+                href={`#/studio/${studioAppAlternative.id}?tool=${encodeURIComponent(tool.slug)}`}
                 className="block text-center w-full py-3 bg-[#1A1A1A] text-white hover:bg-[#E64833] transition-colors text-[9px] font-mono font-bold uppercase tracking-widest"
               >
                 Launch Gemini App Instantly
