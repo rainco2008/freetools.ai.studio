@@ -38,17 +38,6 @@ export function Header({ onOpenSidebar, showSidebarButton = false }: NavigationP
         >
           LAUNCH STUDIO
         </a>
-        <a
-          href="https://aistudio.google.com/apps"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 border border-[#D1CEC7] bg-white px-2 py-1.5 text-[9px] font-bold tracking-[0.12em] text-[#5C5955] transition-all hover:border-[#1A1A1A] hover:text-[#1A1A1A]"
-          title="Open Google AI Studio to import and publish this project"
-          aria-label="Deploy with Google AI Studio"
-        >
-          <img src="/branding/google-ai-studio-deploy-badge.png" alt="Google Cloud deployment" className="h-5 w-16 object-contain" />
-          <span>DEPLOY</span>
-        </a>
       </nav>
     </header>
   );

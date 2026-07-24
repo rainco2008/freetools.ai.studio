@@ -42,11 +42,13 @@ Bouquet Generator 是一个 React 创意 Studio 应用，由原 Astro/Vue 项目
 
 ## 一键部署入口
 
-应用顶部导航包含 **DEPLOY** 部署按钮，使用合成后的 Google Cloud 部署图标：
+仓库在本部署说明中包含合成后的 Google Cloud 部署图标：
 
 ```text
 public/branding/google-ai-studio-deploy-badge.png
 ```
+
+![Google AI Studio 部署图标](public/branding/google-ai-studio-deploy-badge.png)
 
 按钮会打开 Google AI Studio。发布本项目的步骤如下：
 
