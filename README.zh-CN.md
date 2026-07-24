@@ -142,3 +142,4 @@ npm run start
 
 本项目基于 GPLv3 许可证发布。
 本项目是基于开源项目 it-tools（https://github.com/CorentinTh/it-tools）的 React 重构版本。
+本项目引用了开源项目ai-bouquet-generator（https://github.com/cloudinary-devs/ai-bouquet-generator），并使用React重构版本。
