@@ -67,3 +67,32 @@ export interface SavedReport {
   report: ResearchReport;
   groundingSources: GroundingSource[];
 }
+
+export interface SuperworkerDiscovery {
+  searchQueries: string[];
+  keyFindings: string[];
+  groundingLinks: string[];
+}
+
+export interface SuperworkerProcessing {
+  dataTransformations: string[];
+  logicApplied: string;
+}
+
+export interface SuperworkerSynthesis<T = any> {
+  finalOutput: T;
+  confidenceScore: number;
+}
+
+export interface SuperworkerAuditing {
+  potentialBiases: string[];
+  limitations: string[];
+  verificationSteps: string[];
+}
+
+export interface SuperworkerResponse<T = any> {
+  discovery: SuperworkerDiscovery;
+  processing: SuperworkerProcessing;
+  synthesis: SuperworkerSynthesis<T>;
+  auditing: SuperworkerAuditing;
+}

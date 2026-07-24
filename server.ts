@@ -356,6 +356,81 @@ ${inputs.text}
   }
 });
 
+// API endpoint for Superworkers Standardized Workflow
+app.post("/api/superworker", async (req, res) => {
+  try {
+    const { task, domain, inputs } = req.body;
+    if (!task) {
+      return res.status(400).json({ error: "任务(task)不能为空" });
+    }
+
+    const ai = getGeminiClient();
+
+    const systemInstruction = `你是一个符合 Superworkers Skill Protocol 的超级数字员工。
+你的核心工作流包含四个阶段：Discovery（发现与检索）、Processing（数据处理与分析）、Synthesis（合成与产出）、Auditing（审计与验证）。
+针对用户的任务目标（Task）和所在领域（Domain），你必须执行这四个步骤，并严格输出纯 JSON 格式的数据。你可以利用 Google Search Grounding 获取最新事实。
+
+你必须严格遵守以下 JSON 结构输出（输出必须是纯 JSON，不要包含在 \`\`\`json\`\`\` 代码块中）：
+{
+  "discovery": {
+    "searchQueries": string[], // 为了完成任务进行的检索思路或关键词
+    "keyFindings": string[], // 检索或发现的核心事实/要素
+    "groundingLinks": string[] // 依据的来源信息
+  },
+  "processing": {
+    "dataTransformations": string[], // 你对数据进行了哪些结构化、提纯或格式转换
+    "logicApplied": string // 应用了什么业务逻辑或框架规则
+  },
+  "synthesis": {
+    "finalOutput": any, // 【核心交付物】根据任务需要自动适应，可以是对象、数组或字符串，包含最终可执行的代码、文案或分析结果
+    "confidenceScore": number // 0-100 的信心指数
+  },
+  "auditing": {
+    "potentialBiases": string[], // 结果中可能存在的偏差
+    "limitations": string[], // 产出物的局限性
+    "verificationSteps": string[] // 建议用户在实际应用前进行的下一步验证
+  }
+}`;
+
+    const userPrompt = `Domain (业务领域): ${domain || 'General'}\nTask (任务目标): ${task}\nAdditional Inputs (附加输入): ${JSON.stringify(inputs || {})}\n\n请执行 Superworkers 工作流。`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: userPrompt,
+      config: {
+        systemInstruction: systemInstruction,
+        tools: [{ googleSearch: {} }],
+        responseMimeType: "application/json",
+        temperature: 0.2,
+      },
+    });
+
+    const responseText = response.text;
+    if (!responseText) {
+      throw new Error("模型未返回任何文本内容。");
+    }
+
+    let parsedData;
+    try {
+      parsedData = JSON.parse(responseText.trim());
+    } catch (parseErr) {
+      console.error("Superworker JSON Parsing failed. Response was:", responseText);
+      return res.status(500).json({
+        error: "Superworker 返回的数据格式解析失败",
+        details: responseText,
+      });
+    }
+
+    res.json(parsedData);
+
+  } catch (error: any) {
+    console.error("Superworker API Error:", error);
+    res.status(500).json({
+      error: error.message || "执行 Superworker 工作流时发生未知错误",
+    });
+  }
+});
+
 // Serve frontend assets and start listening
 async function bootstrap() {
   if (process.env.NODE_ENV !== "production") {
