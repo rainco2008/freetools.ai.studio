@@ -252,7 +252,7 @@ export default function LandingPage() {
           </div>
 
           <div className="bg-[#F5F2EC] p-4 border border-[#D1CEC7] text-xs text-[#5C5955] space-y-2">
-            <span className="font-serif font-bold text-[#1A1A1A] block">ðŸ“œ Open Studio Initiative</span>
+            <span className="font-serif font-bold text-[#1A1A1A] block">Open Studio Initiative</span>
             <p className="font-serif text-[11px] leading-relaxed text-[#8C8984]">
               We systematically reverse-engineer repetitive, high-cost enterprise AI interfaces and configure custom-crafted Gemini endpoints for public use. By removing credit ceilings, we protect your creative workflow from arbitrary subscriptions.
             </p>

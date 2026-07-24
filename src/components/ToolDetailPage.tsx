@@ -23,7 +23,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
         <h3 className="text-xl font-serif font-bold text-[#1A1A1A]">Audit Record Not Found</h3>
         <p className="text-xs text-[#8C8984] font-serif">The AI software analysis page you are trying to visit does not exist or has been removed from our database.</p>
         <a
-          href="#/"
+          href="/"
           className="inline-block px-4 py-2 border border-[#1A1A1A] bg-black text-white text-[9px] uppercase font-bold tracking-widest hover:bg-black/85 transition-colors"
         >
           BACK TO CATALOG
@@ -37,7 +37,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
       {/* Back button */}
       <div>
         <a 
-          href="#/" 
+          href="/"
           className="inline-flex items-center gap-1.5 text-xs text-[#5C5955] hover:text-[#1A1A1A] font-mono uppercase tracking-widest transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />

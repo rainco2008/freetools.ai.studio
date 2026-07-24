@@ -80,7 +80,7 @@ export default function BouquetGenerator() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 bg-[#FCFAF7]">
       <div className="border-b border-[#D1CEC7] pb-6">
-        <a href="#/" className="text-[10px] font-mono uppercase tracking-widest text-[#8C8984] hover:text-[#1A1A1A]">Studio Hub /</a>
+        <a href="/" className="text-[10px] font-mono uppercase tracking-widest text-[#8C8984] hover:text-[#1A1A1A]">Studio Hub /</a>
         <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="mb-2 inline-flex items-center gap-2 bg-[#E64833] px-2 py-1 text-[9px] font-mono font-bold uppercase tracking-widest text-white"><Flower2 className="h-3 w-3" /> Creative Studio</div>

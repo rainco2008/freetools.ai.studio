@@ -130,7 +130,7 @@ export const BcryptTool: React.FC = () => {
               ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
               : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/30'
           }`}>
-            {isMatch? 'Ã¢Å“â€œ Password matches hash!' : 'Ã¢Å“â€¢ Password does NOT match hash.'}
+            {isMatch ? 'Password matches hash.' : 'Password does NOT match hash.'}
           </div>
         )}
       </div>

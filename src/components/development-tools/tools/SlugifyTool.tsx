@@ -3,7 +3,7 @@ import slugify from '@sindresorhus/slugify';
 import { CopyButton } from '../components/CopyButton';
 
 export const SlugifyTool: React.FC = () => {
-  const [text, setText] = useState('Hello World! This is an IT Tools Example ðŸš€');
+  const [text, setText] = useState('Hello World! This is an IT Tools Example');
   const [separator, setSeparator] = useState('-');
   const [lowercase, setLowercase] = useState(true);
 
