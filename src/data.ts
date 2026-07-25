@@ -18,12 +18,91 @@ export interface Tool {
   features: string[];
 }
 
+export interface SubCategoryDef {
+  id: string;
+  name: string;
+  nameZh?: string;
+  iconName: string;
+}
+
+export interface CategoryDef {
+  id: string;
+  name: string;
+  nameZh?: string;
+  iconName: string;
+  description: string;
+  subCategories: SubCategoryDef[];
+}
+
 export const CATEGORIES = [
   "Cognitive Writing",
   "Semantic SEO",
   "Development",
   "Data & Intel",
   "Language"
+];
+
+export const CATEGORIES_TAXONOMY: CategoryDef[] = [
+  {
+    id: "cognitive-writing",
+    name: "Cognitive Writing",
+    nameZh: "认知写作",
+    iconName: "FileText",
+    description: "AI-assisted research, copywriting, and structured long-form content generation.",
+    subCategories: [
+      { id: "research-briefs", name: "Research Briefs", nameZh: "研究简报", iconName: "Search" },
+      { id: "copywriting", name: "Copywriting", nameZh: "文案撰写", iconName: "PenTool" },
+      { id: "longform-drafts", name: "Longform Drafts", nameZh: "长文草稿", iconName: "FileText" }
+    ]
+  },
+  {
+    id: "semantic-seo",
+    name: "Semantic SEO",
+    nameZh: "语义 SEO",
+    iconName: "Search",
+    description: "Search intent analysis, keyword gap discovery, and SERP optimization.",
+    subCategories: [
+      { id: "keyword-gaps", name: "Keyword Gaps", nameZh: "关键词差距", iconName: "Compass" },
+      { id: "content-audit", name: "Content Audit", nameZh: "内容审计", iconName: "Layers" },
+      { id: "serp-analysis", name: "Serp Analysis", nameZh: "SERP 分析", iconName: "Globe" }
+    ]
+  },
+  {
+    id: "development",
+    name: "Development",
+    nameZh: "开发工具",
+    iconName: "Code2",
+    description: "Developer tools, component generators, and code architecture sandbox.",
+    subCategories: [
+      { id: "ui-components", name: "UI Components", nameZh: "UI 组件", iconName: "LayoutGrid" },
+      { id: "dev-tools", name: "Dev Tools", nameZh: "开发者工具", iconName: "Terminal" },
+      { id: "code-architect", name: "Code Architect", nameZh: "代码架构", iconName: "Cpu" }
+    ]
+  },
+  {
+    id: "data-intel",
+    name: "Data & Intel",
+    nameZh: "数据与情报",
+    iconName: "Database",
+    description: "Market intelligence, academic paper synthesis, and fact verification.",
+    subCategories: [
+      { id: "market-intelligence", name: "Market Intelligence", nameZh: "市场情报", iconName: "Database" },
+      { id: "academic-research", name: "Academic Research", nameZh: "学术研究", iconName: "Briefcase" },
+      { id: "fact-verification", name: "Fact Verification", nameZh: "事实核查", iconName: "ShieldCheck" }
+    ]
+  },
+  {
+    id: "language",
+    name: "Language",
+    nameZh: "语言工具",
+    iconName: "Globe",
+    description: "Multilingual translation, grammar optimization, and localization.",
+    subCategories: [
+      { id: "translation", name: "Translation", nameZh: "机器翻译", iconName: "Globe" },
+      { id: "grammar-style", name: "Grammar & Style", nameZh: "语法与风格", iconName: "Feather" },
+      { id: "localization", name: "Localization", nameZh: "本地化", iconName: "Wand2" }
+    ]
+  }
 ];
 
 export const STUDIO_APPS = [
