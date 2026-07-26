@@ -80,14 +80,9 @@ export function TopHeader({
           <div className="h-6 w-6 border border-[#1A1A1A] bg-black text-white flex items-center justify-center font-serif font-black text-xs">
             F
           </div>
-          <div className="flex flex-col">
-            <span className="text-xs font-mono font-bold uppercase tracking-[0.15em] text-[#8C8984] leading-none transition-colors group-hover:text-[#1A1A1A]">
-              OPEN TOOLKIT MATRIX
-            </span>
-            <h1 className="text-lg font-serif italic font-black leading-none text-[#1A1A1A]">
-              freetools<span className="text-[#E64833] font-sans not-italic font-bold">.ai.studio</span>
-            </h1>
-          </div>
+          <h1 className="text-lg font-serif italic font-black leading-none text-[#1A1A1A]">
+            freetools<span className="text-[#E64833] font-sans not-italic font-bold">.ai.studio</span>
+          </h1>
         </a>
       </div>
 
@@ -115,22 +110,6 @@ export function TopHeader({
 
       {/* Right: Actions & User Auth */}
       <div className="flex items-center gap-3">
-        <a 
-          href="#/discover" 
-          className="hidden md:flex items-center gap-1 text-xs font-mono uppercase tracking-wider text-[#5C5955] hover:text-[#1A1A1A]"
-        >
-          <Compass className="h-3.5 w-3.5 text-[#8C8984]" />
-          <span>Discover Index</span>
-        </a>
-
-        <a 
-          href="#/studio/research-brief" 
-          className="hidden sm:flex items-center gap-1 px-3 py-1.5 border border-[#1A1A1A] bg-black text-white hover:bg-white hover:text-[#1A1A1A] transition-all text-xs font-mono font-bold tracking-widest uppercase cursor-pointer"
-        >
-          <Sparkles className="h-3.5 w-3.5 text-[#E64833]" />
-          <span>Launch Studio</span>
-        </a>
-
         <span className="hidden md:block h-4 w-px bg-[#D1CEC7]" />
         
         {/* User Auth & Menu */}

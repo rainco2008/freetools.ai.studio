@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { firebaseConfig } from "../lib/firebase";
-import { LogOut, User as UserIcon, Cloud, Sparkles, ChevronDown, CheckCircle2, Shield, Loader2, AlertTriangle, ExternalLink, X } from "lucide-react";
+import { LogOut, User as UserIcon, Cloud, ChevronDown, CheckCircle2, Shield, Loader2, AlertTriangle, ExternalLink, X } from "lucide-react";
 
 export function UserMenu() {
   const { 
@@ -11,9 +11,7 @@ export function UserMenu() {
     authError, 
     clearAuthError, 
     loginWithGoogle, 
-    logout, 
-    promptOneTap, 
-    oneTapSupported 
+    logout
   } = useAuth();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -130,16 +128,6 @@ export function UserMenu() {
           {signingIn ? "Signing In..." : "Sign In"}
         </button>
 
-        {oneTapSupported && (
-          <button
-            onClick={() => promptOneTap()}
-            className="hidden sm:flex items-center gap-1 px-2.5 py-1 text-xs font-mono text-[#8C8984] hover:text-[#1A1A1A] transition-colors uppercase tracking-wider cursor-pointer"
-            title="Google One Tap quick sign-in enabled"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#E64833]" />
-            One Tap
-          </button>
-        )}
       </div>
     );
   }
