@@ -1,5 +1,6 @@
 import { Code2, Image as ImageIcon } from "lucide-react";
 import { Locale, TOOL_COUNTS } from "../freeToolsCatalog";
+import { openConsentSettings } from "../lib/analytics";
 
 export function Footer({ locale = "zh" }: { locale?: Locale }) {
   const zh = locale === "zh";
@@ -32,6 +33,9 @@ export function Footer({ locale = "zh" }: { locale?: Locale }) {
           <a href="#/" className="hover:text-white">{zh ? "首页" : "Home"}</a>
           <a href="#/terms" className="hover:text-white">{zh ? "使用条款" : "Terms"}</a>
           <a href="#/privacy" className="hover:text-white">{zh ? "隐私政策" : "Privacy"}</a>
+          <button type="button" onClick={openConsentSettings} className="hover:text-white">
+            {zh ? "Cookie 设置" : "Cookie settings"}
+          </button>
         </nav>
       </div>
       <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-xs text-white/40">

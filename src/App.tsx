@@ -1,14 +1,17 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import SiteHeader from "./components/SiteHeader";
 import FreeToolsHome from "./components/FreeToolsHome";
+import ConsentBanner from "./components/ConsentBanner";
 import { Footer } from "./components/Navigation";
 import { Locale } from "./freeToolsCatalog";
+import { trackPageView } from "./lib/analytics";
 
 const DevelopmentToolsWorkbench = lazy(() => import("./components/DevelopmentToolsWorkbench"));
 const ImageToolsWorkbench = lazy(() => import("./components/ImageToolsWorkbench"));
+const BouquetGenerator = lazy(() => import("./components/BouquetGenerator"));
 const LegalPages = lazy(() => import("./components/LegalPages"));
 
-type AppRoute = "home" | "developer" | "image" | "terms" | "privacy";
+type AppRoute = "home" | "developer" | "image" | "bouquet" | "terms" | "privacy";
 
 interface RouteState {
   route: AppRoute;
@@ -19,6 +22,14 @@ function parseRoute(hash: string): RouteState {
   const normalized = hash.replace(/^#/, "") || "/";
   const [path, queryString = ""] = normalized.split("?");
   const query = new URLSearchParams(queryString);
+
+  if (
+    path === "/bouquet-generator" ||
+    path === "/bouquetgenerator" ||
+    query.get("tool") === "bouquet-generator"
+  ) {
+    return { route: "bouquet", query };
+  }
 
   if (
     path === "/developer" ||
@@ -61,7 +72,7 @@ export default function App() {
   const [locale, setLocale] = useState<Locale>(() => {
     const saved = localStorage.getItem("freetools_locale");
     if (saved === "zh" || saved === "en") return saved;
-    return navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
+    return "en";
   });
 
   useEffect(() => {
@@ -77,6 +88,7 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
+    trackPageView(`${window.location.pathname}${currentHash}`);
   }, [currentHash]);
 
   const routeState = useMemo(() => parseRoute(currentHash), [currentHash]);
@@ -93,6 +105,12 @@ export default function App() {
         return (
           <Suspense fallback={<LoadingPage />}>
             <ImageToolsWorkbench locale={locale} requestedToolId={routeState.query.get("tool")} />
+          </Suspense>
+        );
+      case "bouquet":
+        return (
+          <Suspense fallback={<LoadingPage />}>
+            <BouquetGenerator locale={locale} />
           </Suspense>
         );
       case "terms":
@@ -117,6 +135,7 @@ export default function App() {
       <SiteHeader locale={locale} onLocaleChange={setLocale} route={routeState.route} />
       <main className="min-w-0 flex-1">{content}</main>
       <Footer locale={locale} />
+      <ConsentBanner locale={locale} />
     </div>
   );
 }

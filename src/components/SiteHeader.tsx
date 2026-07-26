@@ -9,11 +9,12 @@ import {
   X,
 } from "lucide-react";
 import { Locale, TOOL_COUNTS } from "../freeToolsCatalog";
+import UserMenu from "./UserMenu";
 
 interface SiteHeaderProps {
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
-  route: "home" | "developer" | "image" | "terms" | "privacy";
+  route: "home" | "developer" | "image" | "bouquet" | "terms" | "privacy";
 }
 
 const copy = {
@@ -92,7 +93,8 @@ export default function SiteHeader({
         <nav className="ml-5 hidden h-full items-center gap-1 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const active = route === item.id;
+            const active =
+              route === item.id || (item.id === "image" && route === "bouquet");
             return (
               <a
                 key={item.id}
@@ -136,9 +138,11 @@ export default function SiteHeader({
             <Languages className="h-4 w-4 text-[#E64833]" />
             {locale === "zh" ? "EN" : "中文"}
           </button>
+          <UserMenu locale={locale} />
         </div>
 
         <div className="ml-auto flex items-center gap-2 lg:hidden">
+          <UserMenu locale={locale} />
           <button
             type="button"
             onClick={() => setSearchOpen((open) => !open)}
@@ -181,7 +185,8 @@ export default function SiteHeader({
           <nav className="mx-auto grid max-w-xl gap-2" aria-label="Mobile navigation">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const active = route === item.id;
+              const active =
+                route === item.id || (item.id === "image" && route === "bouquet");
               return (
                 <a
                   key={item.id}

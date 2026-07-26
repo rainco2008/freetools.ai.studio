@@ -35,6 +35,7 @@ const zhToolNames: Record<string, string> = {
   viewer: "图片查看",
   "long-image": "长图拼接",
   video: "视频转换",
+  "bouquet-generator": "AI 花束生成器",
 };
 
 const copy = {
@@ -42,7 +43,7 @@ const copy = {
     eyebrow: "图片与媒体",
     title: "图片工具工作台",
     intro: "截图、美化、编辑、背景处理、压缩、格式转换与媒体工具，打开即可使用。",
-    local: "Canvas 与 WASM 本地处理",
+    local: "11 个本地工具 · 1 个云端生成工具",
     search: "搜索图片工具",
     chooseTool: "选择工具",
     allGroups: "全部分组",
@@ -53,7 +54,7 @@ const copy = {
     eyebrow: "Image & media",
     title: "Image Tools Workbench",
     intro: "Screenshot, beautify, edit, background, compression, conversion, and media tools ready in your browser.",
-    local: "Local Canvas & WASM processing",
+    local: "11 local tools · 1 cloud generator",
     search: "Search image tools",
     chooseTool: "Choose a tool",
     allGroups: "All groups",
@@ -109,6 +110,10 @@ export default function ImageToolsWorkbench({
   const currentToolDesc = selectedTool[2] as string;
 
   const selectTool = (toolId: string) => {
+    if (toolId === "bouquet-generator") {
+      window.location.hash = "#/bouquet-generator";
+      return;
+    }
     setSelectedToolId(toolId);
     window.location.hash = `#/image?tool=${encodeURIComponent(toolId)}`;
   };
