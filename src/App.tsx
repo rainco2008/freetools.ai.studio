@@ -9,6 +9,7 @@ import { TermsPage, PrivacyPage } from "./components/LegalPages";
 import StudioAppSandbox from "./components/StudioAppSandbox";
 import Breadcrumbs from "./components/Breadcrumbs";
 import { SavedReport, ResearchReport, GroundingSource } from "./types";
+import ShotEasyStudio from "./components/ShotEasyStudio";
 
 export default function App() {
   // Simple Hash Routing System
@@ -214,6 +215,9 @@ export default function App() {
 
   // --- Main Route Component Rendering ---
   const renderMainContent = () => {
+    if (currentHash === "#/shot-easy") {
+      return <ShotEasyStudio />;
+    }
     if (toolSlug) {
       return <ToolDetailPage slug={toolSlug} />;
     }
