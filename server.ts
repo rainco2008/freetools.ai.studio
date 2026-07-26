@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
-import { createServer as createViteServer } from "vite";
 
 // Load environment variables
 dotenv.config();
@@ -435,6 +434,7 @@ You MUST strictly output pure JSON matching this structure (without markdown cod
 async function bootstrap() {
   if (process.env.NODE_ENV !== "production") {
     // Vite integration in development
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
