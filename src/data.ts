@@ -1,4 +1,6 @@
 import { DEVELOPMENT_TOOL_CATALOG } from "./components/development-tools/catalog";
+import { IMAGE_TOOL_CATALOG } from "./components/image-tools/catalog";
+
 export interface Tool {
   slug: string;
   name: string;
@@ -21,14 +23,12 @@ export interface Tool {
 export interface SubCategoryDef {
   id: string;
   name: string;
-  nameZh?: string;
   iconName: string;
 }
 
 export interface CategoryDef {
   id: string;
   name: string;
-  nameZh?: string;
   iconName: string;
   description: string;
   subCategories: SubCategoryDef[];
@@ -37,70 +37,85 @@ export interface CategoryDef {
 export const CATEGORIES = [
   "Cognitive Writing",
   "Semantic SEO",
-  "Development",
+  "Developer",
   "Data & Intel",
-  "Language"
+  "Language",
+  "Image"
 ];
 
 export const CATEGORIES_TAXONOMY: CategoryDef[] = [
   {
     id: "cognitive-writing",
     name: "Cognitive Writing",
-    nameZh: "认知写作",
     iconName: "FileText",
     description: "AI-assisted research, copywriting, and structured long-form content generation.",
     subCategories: [
-      { id: "research-briefs", name: "Research Briefs", nameZh: "研究简报", iconName: "Search" },
-      { id: "copywriting", name: "Copywriting", nameZh: "文案撰写", iconName: "PenTool" },
-      { id: "longform-drafts", name: "Longform Drafts", nameZh: "长文草稿", iconName: "FileText" }
+      { id: "research-briefs", name: "Research Briefs", iconName: "Search" },
+      { id: "copywriting", name: "Copywriting", iconName: "PenTool" },
+      { id: "longform-drafts", name: "Longform Drafts", iconName: "FileText" }
     ]
   },
   {
     id: "semantic-seo",
     name: "Semantic SEO",
-    nameZh: "语义 SEO",
     iconName: "Search",
     description: "Search intent analysis, keyword gap discovery, and SERP optimization.",
     subCategories: [
-      { id: "keyword-gaps", name: "Keyword Gaps", nameZh: "关键词差距", iconName: "Compass" },
-      { id: "content-audit", name: "Content Audit", nameZh: "内容审计", iconName: "Layers" },
-      { id: "serp-analysis", name: "Serp Analysis", nameZh: "SERP 分析", iconName: "Globe" }
+      { id: "keyword-gaps", name: "Keyword Gaps", iconName: "Compass" },
+      { id: "content-audit", name: "Content Audit", iconName: "Layers" },
+      { id: "serp-analysis", name: "Serp Analysis", iconName: "Globe" }
     ]
   },
   {
     id: "development",
-    name: "Development",
-    nameZh: "开发工具",
+    name: "Developer",
     iconName: "Code2",
     description: "Developer tools, component generators, and code architecture sandbox.",
     subCategories: [
-      { id: "ui-components", name: "UI Components", nameZh: "UI 组件", iconName: "LayoutGrid" },
-      { id: "dev-tools", name: "Dev Tools", nameZh: "开发者工具", iconName: "Terminal" },
-      { id: "code-architect", name: "Code Architect", nameZh: "代码架构", iconName: "Cpu" }
+      { id: "ui-components", name: "UI Components", iconName: "LayoutGrid" },
+      { id: "dev-tools", name: "Dev Tools", iconName: "Terminal" },
+      { id: "code-architect", name: "Code Architect", iconName: "Cpu" }
     ]
   },
   {
     id: "data-intel",
     name: "Data & Intel",
-    nameZh: "数据与情报",
     iconName: "Database",
     description: "Market intelligence, academic paper synthesis, and fact verification.",
     subCategories: [
-      { id: "market-intelligence", name: "Market Intelligence", nameZh: "市场情报", iconName: "Database" },
-      { id: "academic-research", name: "Academic Research", nameZh: "学术研究", iconName: "Briefcase" },
-      { id: "fact-verification", name: "Fact Verification", nameZh: "事实核查", iconName: "ShieldCheck" }
+      { id: "market-intelligence", name: "Market Intelligence", iconName: "Database" },
+      { id: "academic-research", name: "Academic Research", iconName: "Briefcase" },
+      { id: "fact-verification", name: "Fact Verification", iconName: "ShieldCheck" }
     ]
   },
   {
     id: "language",
     name: "Language",
-    nameZh: "语言工具",
     iconName: "Globe",
     description: "Multilingual translation, grammar optimization, and localization.",
     subCategories: [
-      { id: "translation", name: "Translation", nameZh: "机器翻译", iconName: "Globe" },
-      { id: "grammar-style", name: "Grammar & Style", nameZh: "语法与风格", iconName: "Feather" },
-      { id: "localization", name: "Localization", nameZh: "本地化", iconName: "Wand2" }
+      { id: "translation", name: "Translation", iconName: "Globe" },
+      { id: "grammar-style", name: "Grammar & Style", iconName: "Feather" },
+      { id: "localization", name: "Localization", iconName: "Wand2" }
+    ]
+  },
+  {
+    id: "image",
+    name: "Image",
+    iconName: "Image",
+    description: "Image processing, screenshots, and visual assets.",
+    subCategories: [
+      { id: "screenshot", name: "Screenshot", iconName: "Camera" },
+      { id: "editor", name: "Editor", iconName: "Edit3" },
+      { id: "beautifier", name: "Beautifier", iconName: "Sparkles" },
+      { id: "rounded", name: "Rounded", iconName: "Circle" },
+      { id: "remover", name: "Remover", iconName: "Eraser" },
+      { id: "blur-bg", name: "Blur BG", iconName: "Droplet" },
+      { id: "compressor", name: "Compressor", iconName: "Minimize" },
+      { id: "convert", name: "Convert", iconName: "RefreshCcw" },
+      { id: "viewer", name: "Viewer", iconName: "Eye" },
+      { id: "long-image", name: "Long Image", iconName: "Maximize2" },
+      { id: "video", name: "Video", iconName: "Video" }
     ]
   }
 ];
@@ -133,7 +148,7 @@ export const STUDIO_APPS = [
   {
     id: "code-architect",
     name: "Component & Shell Architect",
-    category: "Development",
+    category: "Developer",
     tagline: "Zero-Barrier Component, Shell & Automation Terminal",
     description: "Transforms plain English descriptions into beautifully annotated, highly responsive Tailwind markup, React structures, ready-to-run Python processes, or standard Linux automation commands.",
     iconName: "Briefcase",
@@ -157,15 +172,24 @@ export const STUDIO_APPS = [
   {
     id: "development-tools",
     name: "IT Tools Development Workbench",
-    category: "Development",
+    category: "Developer",
     tagline: "34 local-first developer utilities in one workspace",
     description: "A React-native workbench containing the complete IT Tools collection, migrated for the newfreetools Google AI Studio project.",
     iconName: "Terminal",
+  },
+  {
+    id: "image-tools",
+    name: "Image Processing Workbench",
+    category: "Image",
+    tagline: "Comprehensive local-first image processing utilities",
+    description: "A complete image manipulation workbench containing Screenshot, Editor, Beautifier, Rounded, Remover, Blur BG, Compressor, Convert, Viewer, Long Image, and Video tools.",
+    iconName: "Image",
   }
 ];
 
 export const TOOLS_DATABASE: Tool[] = [
   ...DEVELOPMENT_TOOL_CATALOG,
+  ...IMAGE_TOOL_CATALOG,
   // Cognitive Writing Tools
   {
     slug: "copy-ai",
@@ -320,11 +344,11 @@ export const TOOLS_DATABASE: Tool[] = [
     features: ["Real-time NLP Scoring", "Outline Generator", "Keyword Clustering", "Editor Integration"]
   },
 
-  // Development Tools
+  // Developer Tools
   {
     slug: "v0-dev",
     name: "v0.dev",
-    category: "Development",
+    category: "Developer",
     subCategory: "UI Generation",
     industryAnchor: "v0.dev",
     description: "Generative UI system by Vercel that delivers production-grade, beautifully styled Tailwind React components from short text prompts.",
@@ -349,7 +373,7 @@ export const TOOLS_DATABASE: Tool[] = [
   {
     slug: "bolt-new",
     name: "Bolt.new",
-    category: "Development",
+    category: "Developer",
     subCategory: "Full-Stack Sandboxes",
     industryAnchor: "Bolt.new",
     description: "In-browser full-stack sandbox utilizing WebContainer technology to run Node.js processes, install npm modules, and preview updates in real time.",

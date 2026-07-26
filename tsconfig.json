@@ -16,11 +16,20 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@lib/*": ["./src/shot-easy/lib/*"],
+      "@states/*": ["./src/shot-easy/states/*"],
+      "@i18n/*": ["./src/shot-easy/i18n/*"],
+      "@components/*": ["./src/shot-easy/components/*"],
+      "@engines/*": ["./src/shot-easy/engines/*"],
+      "@layouts/*": ["./src/shot-easy/layouts/*"],
+      "@static/*": ["./src/shot-easy/static/*"]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -84,10 +84,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         href="#/"
         onClick={handleHomeClick}
         className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[#5C5954] hover:text-[#E64833] hover:bg-[#EAE6DF] transition-colors font-medium"
-        title="Go to Home / 首页"
+        title="Go to Home"
       >
         <Home className="w-3.5 h-3.5 text-[#8C8984]" />
-        <span>Home / 首页</span>
+        <span>Home</span>
       </a>
 
       {/* Landing View with Category Filter */}
@@ -102,12 +102,12 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
                   onClick={(e) => handleCategoryClick(currentCategoryObj.id, e)}
                   className="px-2 py-1 rounded-md text-[#5C5954] hover:text-[#E64833] hover:bg-[#EAE6DF] transition-colors cursor-pointer"
                 >
-                  {currentCategoryObj.nameZh || currentCategoryObj.name}
+                  {currentCategoryObj.name}
                 </button>
               ) : (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
                   <Box className="w-3 h-3 text-[#E64833]" />
-                  {currentCategoryObj.nameZh} ({currentCategoryObj.name})
+                  {currentCategoryObj.name}
                 </span>
               )}
             </>
@@ -117,7 +117,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             <>
               <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
-                {currentSubCategoryObj.nameZh} ({currentSubCategoryObj.name})
+                {currentSubCategoryObj.name}
               </span>
             </>
           )}
@@ -130,7 +130,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
             <Compass className="w-3.5 h-3.5 text-[#E64833]" />
-            Discover & Inspiration / 发现工具灵感
+            Discover & Inspiration
           </span>
         </>
       )}
@@ -144,7 +144,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             onClick={handleHomeClick}
             className="px-2 py-1 rounded-md text-[#5C5954] hover:text-[#E64833] hover:bg-[#EAE6DF] transition-colors"
           >
-            Tools Directory / 工具目录
+            Tools Directory
           </a>
           {currentToolObj && (
             <>
@@ -171,7 +171,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             onClick={handleHomeClick}
             className="px-2 py-1 rounded-md text-[#5C5954] hover:text-[#E64833] hover:bg-[#EAE6DF] transition-colors"
           >
-            Superworker Sandboxes / 交互沙盒
+            Superworker Sandboxes
           </a>
           <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
@@ -187,7 +187,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
             <Info className="w-3.5 h-3.5 text-[#E64833]" />
-            About Studio / 关于我们
+            About Studio
           </span>
         </>
       )}
@@ -198,7 +198,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
             <FileCheck2 className="w-3.5 h-3.5 text-[#E64833]" />
-            Terms of Service / 服务条款
+            Terms of Service
           </span>
         </>
       )}
@@ -209,7 +209,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           <ChevronRight className="w-3.5 h-3.5 text-[#B8B4AC] shrink-0" />
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#EAE6DF] text-[#1A1A1A] font-semibold border border-[#DCD8D0]">
             <ShieldCheck className="w-3.5 h-3.5 text-[#E64833]" />
-            Privacy Policy / 隐私政策
+            Privacy Policy
           </span>
         </>
       )}

@@ -1,11 +1,13 @@
 import { useState, useEffect, FormEvent } from "react";
-import { Header, Footer } from "./components/Navigation";
+import { TopHeader, CollapsibleSidebar } from "./components/SidebarNavigation";
+import { Footer } from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import DiscoverPage from "./components/DiscoverPage";
 import ToolDetailPage from "./components/ToolDetailPage";
 import AboutPage from "./components/AboutPage";
 import { TermsPage, PrivacyPage } from "./components/LegalPages";
 import StudioAppSandbox from "./components/StudioAppSandbox";
+import Breadcrumbs from "./components/Breadcrumbs";
 import { SavedReport, ResearchReport, GroundingSource } from "./types";
 
 export default function App() {
@@ -186,14 +188,36 @@ export default function App() {
     handleDeleteReport
   };
 
+  // Category state for Breadcrumbs & Landing Page
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // Compute active view & route parameters for Breadcrumbs
+  const toolSlug = getToolSlug();
+  const studioAppId = getStudioAppId();
+
+  let activeView: "landing" | "discover" | "tool-detail" | "studio" | "about" | "terms" | "privacy" = "landing";
+  if (toolSlug) {
+    activeView = "tool-detail";
+  } else if (studioAppId) {
+    activeView = "studio";
+  } else if (currentHash === "#/discover") {
+    activeView = "discover";
+  } else if (currentHash === "#/about") {
+    activeView = "about";
+  } else if (currentHash === "#/terms") {
+    activeView = "terms";
+  } else if (currentHash === "#/privacy") {
+    activeView = "privacy";
+  }
+
   // --- Main Route Component Rendering ---
   const renderMainContent = () => {
-    const toolSlug = getToolSlug();
     if (toolSlug) {
       return <ToolDetailPage slug={toolSlug} />;
     }
 
-    const studioAppId = getStudioAppId();
     if (studioAppId) {
       return <StudioAppSandbox appId={studioAppId} researchBriefProps={researchBriefProps} />;
     }
@@ -215,25 +239,67 @@ export default function App() {
     }
 
     // Default route: LandingPage & Directory Hub
-    return <LandingPage />;
+    return (
+      <LandingPage
+        selectedCategory={selectedCategory}
+        selectedSubCategory={selectedSubCategory}
+        onSelectCategory={(cat) => {
+          setSelectedCategory(cat);
+          setSelectedSubCategory(null);
+        }}
+        onSelectSubCategory={(sub) => setSelectedSubCategory(sub)}
+      />
+    );
   };
-
-  // Decide if we should show the sidebar button inside the main header
-  const isResearchBriefActive = getStudioAppId() === "research-brief";
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FCFAF7] text-[#1A1A1A]">
-      <Header 
-        onOpenSidebar={() => setSidebarOpen(true)} 
-        showSidebarButton={isResearchBriefActive} 
+      <TopHeader 
+        isSidebarCollapsed={isSidebarCollapsed}
+        setIsSidebarCollapsed={setIsSidebarCollapsed}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedSubCategory={selectedSubCategory}
+        setSelectedSubCategory={setSelectedSubCategory}
       />
 
-      {/* Main Container */}
-      <div className="flex-1">
-        {renderMainContent()}
-      </div>
+      {/* Main App Workspace with Left Collapsible Sidebar */}
+      <div className="flex flex-1 min-h-0 relative">
+        <CollapsibleSidebar
+          isSidebarCollapsed={isSidebarCollapsed}
+          setIsSidebarCollapsed={setIsSidebarCollapsed}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          selectedSubCategory={selectedSubCategory}
+          setSelectedSubCategory={setSelectedSubCategory}
+        />
 
-      <Footer />
+        {/* Content Panel */}
+        <main className="flex-1 min-w-0 flex flex-col overflow-x-hidden">
+          {/* Mounted Breadcrumb Navigation Bar below Header */}
+          <div className="mx-auto max-w-7xl w-full px-4 md:px-8 pt-4 pb-0">
+            <Breadcrumbs
+              activeView={activeView}
+              activeSlug={toolSlug}
+              activeStudioAppId={studioAppId}
+              selectedCategory={selectedCategory}
+              selectedSubCategory={selectedSubCategory}
+              onResetCategory={() => {
+                setSelectedCategory(null);
+                setSelectedSubCategory(null);
+              }}
+              onSelectCategory={(cat) => setSelectedCategory(cat)}
+              onSelectSubCategory={(sub) => setSelectedSubCategory(sub)}
+            />
+          </div>
+
+          <div className="flex-1">
+            {renderMainContent()}
+          </div>
+
+          <Footer />
+        </main>
+      </div>
     </div>
   );
 }

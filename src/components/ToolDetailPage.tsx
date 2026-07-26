@@ -63,7 +63,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
             {tool.name} <span className="text-xs font-mono font-normal text-[#8C8984]">Audit v1.4.2</span>
           </h2>
 
-          <p className="text-[11px] text-[#5C5955] font-serif italic max-w-xl">
+          <p className="text-xs sm:text-sm text-[#5C5955] font-serif italic max-w-xl">
             &ldquo;{tool.description}&rdquo;
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
             <h3 className="text-sm font-mono font-bold uppercase tracking-widest text-[#1A1A1A] border-b border-[#D1CEC7] pb-2">
               01. PRODUCT OVERVIEW & DEEP REVIEW
             </h3>
-            <p className="text-xs sm:text-sm text-[#1A1A1A] leading-relaxed font-serif">
+            <p className="text-sm sm:text-base text-[#1A1A1A] leading-relaxed font-serif">
               {tool.overview}
             </p>
           </div>
@@ -103,13 +103,13 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
           <div className="grid sm:grid-cols-2 gap-6 pt-2">
             {/* Pros */}
             <div className="space-y-3 bg-[#FCFAF7] border border-[#D1CEC7] p-5">
-              <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                âœ” ADVANTAGES / GENERAL PROS
+              <span className="text-xs font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
+                ✔ ADVANTAGES / GENERAL PROS
               </span>
-              <ul className="space-y-2.5 text-xs text-[#5C5955] font-serif">
+              <ul className="space-y-2.5 text-xs sm:text-sm text-[#5C5955] font-serif">
                 {tool.pros.map((pro, i) => (
                   <li key={i} className="flex items-start gap-2 leading-relaxed">
-                    <span className="text-[#E64833] font-bold shrink-0">âœ“</span>
+                    <span className="text-[#E64833] font-bold shrink-0">✓</span>
                     <span>{pro}</span>
                   </li>
                 ))}
@@ -118,13 +118,13 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
 
             {/* Cons */}
             <div className="space-y-3 bg-[#FCFAF7] border border-[#D1CEC7] p-5">
-              <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
-                âœ˜ DISADVANTAGES / MAJOR CONS
+              <span className="text-xs font-mono font-bold text-[#1A1A1A] uppercase tracking-wider block border-b border-[#D1CEC7] pb-1">
+                ✖ DISADVANTAGES / MAJOR CONS
               </span>
-              <ul className="space-y-2.5 text-xs text-[#5C5955] font-serif">
+              <ul className="space-y-2.5 text-xs sm:text-sm text-[#5C5955] font-serif">
                 {tool.cons.map((con, i) => (
                   <li key={i} className="flex items-start gap-2 leading-relaxed">
-                    <span className="text-[#8C8984] font-bold shrink-0">âš </span>
+                    <span className="text-[#8C8984] font-bold shrink-0">⚠</span>
                     <span>{con}</span>
                   </li>
                 ))}
@@ -137,7 +137,7 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
             <h3 className="text-sm font-mono font-bold uppercase tracking-widest text-[#1A1A1A] border-b border-[#D1CEC7] pb-2">
               02. FUNCTIONAL MATRIX / FEATURES LIST
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-serif">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs sm:text-sm font-serif">
               {tool.features.map((feat, i) => (
                 <div key={i} className="border border-[#D1CEC7] bg-[#F5F2EC]/30 py-3 px-2">
                   <span className="font-bold text-[#1A1A1A]">{feat}</span>
@@ -153,11 +153,11 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
           
           {/* Metadata Specifications */}
           <div className="border border-[#D1CEC7] bg-[#F5F2EC] p-5 space-y-4">
-            <span className="text-[10px] font-mono font-bold text-[#1A1A1A] uppercase tracking-widest block border-b border-[#D1CEC7] pb-1.5">
+            <span className="text-xs font-mono font-bold text-[#1A1A1A] uppercase tracking-widest block border-b border-[#D1CEC7] pb-1.5">
               SPECIFICATIONS
             </span>
             
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3 text-xs sm:text-sm">
               <div className="flex justify-between">
                 <span className="text-[#8C8984] font-serif">Pricing Model:</span>
                 <span className="font-mono font-bold text-[#1A1A1A] uppercase">{tool.priceRange}</span>
@@ -182,34 +182,34 @@ export default function ToolDetailPage({ slug }: ToolDetailPageProps) {
           {/* STUDIO ALTERNATIVE CALLOUT BOX */}
           {studioAppAlternative && (
             <div className="border-2 border-[#1A1A1A] bg-white p-5 space-y-4 relative overflow-hidden">
-              <div className="absolute right-0 top-0 bg-[#E64833] text-white text-[8px] font-mono font-bold uppercase tracking-widest px-2 py-0.5">
+              <div className="absolute right-0 top-0 bg-[#E64833] text-white text-xs font-mono font-bold uppercase tracking-widest px-2 py-0.5">
                 FREE APP AVAILABLE
               </div>
               
               <div className="space-y-2">
                 <div className="flex items-center gap-1.5">
                   <Sparkles className="h-4 w-4 text-[#E64833]" />
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#E64833]">
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#E64833]">
                     THE STUDIO ALTERNATIVE
                   </span>
                 </div>
                 
-                <h4 className="text-base font-serif font-black text-[#1A1A1A]">
+                <h4 className="text-lg font-serif font-black text-[#1A1A1A]">
                   Bypass the Paywall.
                 </h4>
                 
-                <p className="text-xs text-[#5C5955] leading-relaxed font-serif">
+                <p className="text-xs sm:text-sm text-[#5C5955] leading-relaxed font-serif">
                   Skip binding your credit card or dealing with expensive recurring plans. We have configured the Google Gemini intelligence engine to cover this exact feature set, giving you a high-fidelity, high-density Studio native alternative for free.
                 </p>
               </div>
 
-              <div className="bg-[#F5F2EC] p-3 border border-[#D1CEC7] text-[11px] font-serif italic text-[#8C8984]">
+              <div className="bg-[#F5F2EC] p-3 border border-[#D1CEC7] text-xs sm:text-sm font-serif italic text-[#8C8984]">
                 &ldquo;{studioAppAlternative.tagline}&rdquo;
               </div>
 
               <a
                 href={`#/studio/${studioAppAlternative.id}?tool=${encodeURIComponent(tool.slug)}`}
-                className="block text-center w-full py-3 bg-[#1A1A1A] text-white hover:bg-[#E64833] transition-colors text-[9px] font-mono font-bold uppercase tracking-widest"
+                className="block text-center w-full py-3 bg-[#1A1A1A] text-white hover:bg-[#E64833] transition-colors text-xs font-mono font-bold uppercase tracking-widest"
               >
                 Launch Gemini App Instantly
               </a>

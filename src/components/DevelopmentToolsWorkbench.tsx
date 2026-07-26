@@ -38,7 +38,7 @@ export default function DevelopmentToolsWorkbench() {
         <div className="flex flex-col gap-4 border-b border-[#D1CEC7] pb-6 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-[#E64833]">
-              <Wrench className="h-3.5 w-3.5" /> Development
+              <Wrench className="h-3.5 w-3.5" /> Developer
             </div>
             <h1 className="text-3xl font-serif font-black text-[#1A1A1A] md:text-5xl">Developer Tools Workbench</h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5C5955]">

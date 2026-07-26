@@ -13,6 +13,7 @@ declare global {
             auto_select?: boolean;
             cancel_on_tap_outside?: boolean;
             prompt_parent_id?: string;
+            use_fedcm_for_prompt?: boolean;
           }) => void;
           prompt: (notification?: (notification: any) => void) => void;
           renderButton: (parent: HTMLElement, options: any) => void;
@@ -68,6 +69,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Dynamically load Google Identity Services (GIS) library for One Tap
   useEffect(() => {
+    // Skip loading GIS if we are inside an iframe to prevent FedCM NotAllowedError
+    if (window.self !== window.top) {
+      return;
+    }
+
     if (window.google?.accounts?.id) {
       setGsiLoaded(true);
       return;
@@ -109,6 +115,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         callback: handleOneTapResponse,
         auto_select: false,
         cancel_on_tap_outside: true,
+        use_fedcm_for_prompt: false,
       });
 
       window.google.accounts.id.prompt((notification) => {
@@ -160,20 +167,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       const errorCode = error?.code || "";
       const errorMessage = error?.message || "";
-      let friendlyMessage = "Google 登录失败，请重试。";
+      let friendlyMessage = "Google sign-in failed. Please try again.";
 
       if (errorMessage === "POPUP_TIMEOUT") {
-        friendlyMessage = "登录弹窗未响应或被浏览器跨域 iframe 限制拦截。请点击右上角【在新标签页打开应用】进行登录。";
+        friendlyMessage = "Sign-in popup did not respond or was blocked by browser iframe constraints. Click 'Open app in new tab' in top-right to sign in.";
       } else if (errorCode === "auth/popup-blocked") {
-        friendlyMessage = "登录弹窗被浏览器拦截。请允许此页面的弹出窗口，或在独立新标签页中打开应用。";
+        friendlyMessage = "Sign-in popup was blocked by browser. Please allow popups or open the app in a new tab.";
       } else if (errorCode === "auth/popup-closed-by-user") {
-        friendlyMessage = "登录窗口已关闭。";
+        friendlyMessage = "Sign-in popup was closed.";
       } else if (errorCode === "auth/unauthorized-domain") {
-        friendlyMessage = "当前域名未在 Firebase Auth 授权域名列表中。请在 Firebase 控制台中将当前域名添加为 Authorized Domain。";
+        friendlyMessage = "Current domain is not authorized in Firebase Auth. Please add this domain to Authorized Domains in Firebase Console.";
       } else if (errorCode === "auth/operation-not-allowed") {
-        friendlyMessage = "Firebase 控制台中未启用 Google 身份验证登录提供商。请在 Firebase 控制台开启 Google 登录。";
+        friendlyMessage = "Google Sign-In is not enabled in Firebase Console. Please enable Google Sign-In in Firebase Console.";
       } else if (errorMessage) {
-        friendlyMessage = `登录出错: ${errorMessage}`;
+        friendlyMessage = `Sign-in error: ${errorMessage}`;
       }
 
       setAuthError(friendlyMessage);

@@ -10,6 +10,7 @@ import ReportRenderer from "./ReportRenderer";
 import HistorySidebar from "./HistorySidebar";
 import { SavedReport, ResearchReport, GroundingSource } from "../types";
 import DevelopmentToolsWorkbench from "./DevelopmentToolsWorkbench";
+import ImageToolsWorkbench from "./ImageToolsWorkbench";
 import BouquetGenerator from "./BouquetGenerator";
 
 // Types for individual sandbox apps
@@ -119,6 +120,10 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
 
   if (appId === "development-tools") {
     return <DevelopmentToolsWorkbench />;
+  }
+
+  if (appId === "image-tools") {
+    return <ImageToolsWorkbench />;
   }
 
   if (appId === "bouquet-generator") {
@@ -247,7 +252,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                         value={researchBriefProps.query}
                         onChange={(e) => researchBriefProps.setQuery(e.target.value)}
                         placeholder="e.g. Substantive impact and trends of generative AI on the global labor market in 2026..."
-                        className="w-full border border-[#1A1A1A] bg-white p-4 pr-14 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:ring-1 focus:ring-[#1A1A1A]"
+                        className="w-full border border-[#1A1A1A] bg-white p-4 pr-14 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:ring-1 focus:ring-[#1A1A1A]"
                       />
                       <button
                         type="submit"
@@ -421,7 +426,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
             {appId === "ai-copywriter" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Brand Name / Brand Name
                   </label>
                   <input
@@ -430,12 +435,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Scribe AI"
                     value={inputs.brandName || ""}
                     onChange={(e) => setInputValue("brandName", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
                 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Product Selling Points / Product Features
                   </label>
                   <textarea
@@ -444,12 +449,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="Detail your primary product features, solving what core customer pain points..."
                     value={inputs.description || ""}
                     onChange={(e) => setInputValue("description", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Target Audience / Target Audience
                   </label>
                   <input
@@ -457,18 +462,18 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Freelancers, small e-commerce merchants, solo developers"
                     value={inputs.targetAudience || ""}
                     onChange={(e) => setInputValue("targetAudience", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Ad Format / Marketing Channel
                   </label>
                   <select
                     value={inputs.copyFormat || "Social Media & Ad Copy Package"}
                     onChange={(e) => setInputValue("copyFormat", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
                   >
                     <option value="Google Ads SEM Search Copy">Google Ads SEM Search Copy</option>
                     <option value="Facebook Feed Golden Hooks">Facebook Feed Golden Hooks</option>
@@ -478,7 +483,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Tone & Constraints (Optional) / Constraints
                   </label>
                   <input
@@ -486,7 +491,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Use helpful emojis, highlight cost-effectiveness, keep under 300 words..."
                     value={inputs.constraints || ""}
                     onChange={(e) => setInputValue("constraints", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
               </>
@@ -495,7 +500,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
             {appId === "semantic-seo" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Seed Keywords / Seed Keywords
                   </label>
                   <input
@@ -504,12 +509,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. no-code development, smart wearables, organic coffee benefits"
                     value={inputs.seedKeywords || ""}
                     onChange={(e) => setInputValue("seedKeywords", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Competitors (Optional) / Competitors
                   </label>
                   <input
@@ -517,18 +522,18 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. v0.dev, semrush.com (for competitor comparison audits)"
                     value={inputs.competitors || ""}
                     onChange={(e) => setInputValue("competitors", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Search Intent Target / Search Intent Filter
                   </label>
                   <select
                     value={inputs.targetIntent || "Holistic Intent Gap Discovery"}
                     onChange={(e) => setInputValue("targetIntent", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
                   >
                     <option value="Holistic Intent Gap Discovery">Holistic Intent Gap Discovery</option>
                     <option value="Informational Voids (High-volume user queries)">Informational Voids (High-volume user queries)</option>
@@ -542,7 +547,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
             {appId === "code-architect" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Component Function Description / Requirement
                   </label>
                   <textarea
@@ -551,18 +556,18 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="Describe in detail the code, component, or script you want to generate (e.g. A collapsible Tailwind React Accordion FAQ component with sleek animations and elegant borders)..."
                     value={inputs.requirement || ""}
                     onChange={(e) => setInputValue("requirement", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Target Tech Stack / Tech Stack
                   </label>
                   <select
                     value={inputs.techStack || "Tailwind CSS & HTML"}
                     onChange={(e) => setInputValue("techStack", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
                   >
                     <option value="Tailwind CSS & HTML Component">Tailwind CSS & HTML Component</option>
                     <option value="React TypeScript & Tailwind Component">React TypeScript & Tailwind Component</option>
@@ -572,7 +577,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Design System Style (Optional) / Aesthetic Style
                   </label>
                   <input
@@ -580,7 +585,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Vercel minimal, Cyber terminal design, Cozy editorial..."
                     value={inputs.stylePreference || ""}
                     onChange={(e) => setInputValue("stylePreference", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
               </>
@@ -589,7 +594,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
             {appId === "document-engine" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Upload / Paste Document Text / Paste Document Text
                   </label>
                   <textarea
@@ -598,12 +603,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="Paste financial statements, contract clauses, raw CSV rows, or key paragraphs of research papers here..."
                     value={inputs.documentText || ""}
                     onChange={(e) => setInputValue("documentText", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none font-mono"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none font-mono"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Core Focus Keypoints / Specific focus (Optional)
                   </label>
                   <input
@@ -611,7 +616,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Find clauses unfair to party B, summarize all financial loss figures..."
                     value={inputs.focusQuestions || ""}
                     onChange={(e) => setInputValue("focusQuestions", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
               </>
@@ -620,7 +625,7 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
             {appId === "translation-matrix" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Source Text / Source Text
                   </label>
                   <textarea
@@ -629,12 +634,12 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="Paste the source text you want to translate with high fidelity and stylistic polish..."
                     value={inputs.text || ""}
                     onChange={(e) => setInputValue("text", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A] resize-none"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Target Language / Target Language
                   </label>
                   <input
@@ -643,18 +648,18 @@ export default function StudioAppSandbox({ appId, researchBriefProps }: StudioAp
                     placeholder="e.g. Idiomatic American English, Professional Academic Chinese, Industry-level German"
                     value={inputs.targetLanguage || ""}
                     onChange={(e) => setInputValue("targetLanguage", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] placeholder-[#8C8984] focus:outline-none focus:border-[#1A1A1A]"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[9px] font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
+                  <label className="text-xs font-mono font-bold text-[#5C5955] uppercase tracking-wider block">
                     Tone & Style Anchor / Tone & Style Anchor
                   </label>
                   <select
                     value={inputs.toneStyle || "Objective & Commercial"}
                     onChange={(e) => setInputValue("toneStyle", e.target.value)}
-                    className="w-full border border-[#D1CEC7] bg-white p-3 text-xs text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
+                    className="w-full border border-[#D1CEC7] bg-white p-3 text-sm sm:text-base text-[#1A1A1A] focus:outline-none focus:border-[#1A1A1A] rounded-none"
                   >
                     <option value="Tech Minimalist (Product launches)">Tech Minimalist (Product launches)</option>
                     <option value="Academic Formal (Peer review matched)">Academic Formal (Peer review matched)</option>

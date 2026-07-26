@@ -350,17 +350,17 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
 
         {/* Executive Summary Block */}
         <div className="mb-10 border border-[#D1CEC7] p-6 bg-white">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-3 font-mono">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-3 font-mono">
             EXECUTIVE SUMMARY
           </h3>
-          <p className="text-sm font-serif text-[#3D3A36] leading-relaxed text-justify">
+          <p className="text-base sm:text-lg font-serif text-[#3D3A36] leading-relaxed text-justify">
             {report.summary}
           </p>
         </div>
 
         {/* Section 1: Key Conclusions */}
         <div className="mb-12">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
             01. KEY FINDINGS / SYNTHESISED CONCLUSIONS
           </h3>
           
@@ -370,18 +370,18 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                 key={con.id || index}
                 className="flex items-start gap-3 border-b border-dashed border-[#D1CEC7] pb-4 last:border-b-0 last:pb-0"
               >
-                <span className="text-[#E64833] font-serif italic text-lg leading-none shrink-0 w-8">
+                <span className="text-[#E64833] font-serif italic text-xl leading-none shrink-0 w-8">
                   {(index + 1).toString().padStart(2, "0")}.
                 </span>
                 <div className="flex-1">
-                  <p className="text-xs text-[#1A1A1A] leading-relaxed text-justify">
+                  <p className="text-sm sm:text-base text-[#1A1A1A] leading-relaxed text-justify">
                     {con.text}
                     {/* Inline citation links */}
                     {con.citations && con.citations.map((citeIdx) => (
                       <button
                         key={citeIdx}
                         onClick={() => handleCitationClick(citeIdx)}
-                        className="ml-1 px-1 bg-[#F2EFE9] border border-[#D1CEC7] text-[9px] font-bold text-[#E64833] font-mono hover:bg-[#1A1A1A] hover:text-[#FCFAF7] transition-colors"
+                        className="ml-1 px-1 bg-[#F2EFE9] border border-[#D1CEC7] text-[10px] font-bold text-[#E64833] font-mono hover:bg-[#1A1A1A] hover:text-[#FCFAF7] transition-colors"
                         title={`View Source: [${citeIdx + 1}]`}
                       >
                         [{citeIdx + 1}]
@@ -396,11 +396,11 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
 
         {/* Section 2: Fact, Opinion and Speculation Assessment */}
         <div className="mb-12">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
             02. TRUTH CLAIM CLASSIFICATION / FACTUAL VERACITY
           </h3>
 
-          <p className="text-xs font-serif italic text-[#8C8984] mb-5">
+          <p className="text-xs sm:text-sm font-serif italic text-[#8C8984] mb-5">
             To isolate speculative claims and maintain strict objectivity, this module classifies key public claims into established facts, subjective opinions, and forward-looking speculations.
           </p>
 
@@ -425,31 +425,31 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                   className="flex flex-col border border-[#D1CEC7] p-5 bg-white transition-all duration-200"
                 >
                   <div className="mb-3">
-                    <span className={`inline-block border px-1.5 py-0.5 text-[9px] font-bold tracking-wider font-mono uppercase ${badgeStyle}`}>
+                    <span className={`inline-block border px-1.5 py-0.5 text-[10px] font-bold tracking-wider font-mono uppercase ${badgeStyle}`}>
                       {badgeText}
                     </span>
                   </div>
 
-                  <h4 className="text-xs font-serif italic font-bold text-[#1A1A1A] leading-relaxed mb-4 flex-1">
+                  <h4 className="text-sm sm:text-base font-serif italic font-bold text-[#1A1A1A] leading-relaxed mb-4 flex-1">
                     &ldquo;{item.statement}&rdquo;
                   </h4>
 
                   <div className="border-t border-[#D1CEC7] pt-3 mt-3">
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#8C8984] block mb-1 font-mono">EVIDENCE RATIONALE</span>
-                    <p className="text-xs text-[#5C5955] leading-relaxed">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C8984] block mb-1 font-mono">EVIDENCE RATIONALE</span>
+                    <p className="text-xs sm:text-sm text-[#5C5955] leading-relaxed">
                       {item.rationale}
                     </p>
                   </div>
 
                   {item.citations && item.citations.length > 0 && (
                     <div className="mt-4 pt-3 border-t border-[#D1CEC7] flex items-center justify-between">
-                      <span className="text-[9px] font-mono uppercase tracking-wider text-[#8C8984]">SOURCE EVIDENCE</span>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#8C8984]">SOURCE EVIDENCE</span>
                       <div className="flex gap-1">
                         {item.citations.map((citeIdx) => (
                           <button
                             key={citeIdx}
                             onClick={() => handleCitationClick(citeIdx)}
-                            className="inline-flex h-4 px-1.5 items-center justify-center border border-[#D1CEC7] bg-[#FCFAF7] text-[9px] font-mono font-bold text-[#1A1A1A] hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
+                            className="inline-flex h-4 px-1.5 items-center justify-center border border-[#D1CEC7] bg-[#FCFAF7] text-[10px] font-mono font-bold text-[#1A1A1A] hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
                           >
                             {citeIdx + 1}
                           </button>
@@ -466,7 +466,7 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
         {/* Section 3: Timeline */}
         {report.timeline && report.timeline.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-6 border-b border-[#D1CEC7] pb-2 font-mono">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-6 border-b border-[#D1CEC7] pb-2 font-mono">
               03. CHRONOLOGICAL TIMELINE / HISTORICAL EVOLUTION
             </h3>
 
@@ -479,25 +479,25 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                   {/* Timeline details */}
                   <div className="space-y-1.5">
                     <div className="flex flex-wrap items-baseline gap-2">
-                      <span className="text-[11px] font-bold text-[#E64833] font-mono">
+                      <span className="text-xs font-bold text-[#E64833] font-mono">
                         [{item.date}]
                       </span>
-                      <h4 className="text-xs font-serif font-black text-[#1A1A1A]">
+                      <h4 className="text-sm font-serif font-black text-[#1A1A1A]">
                         {item.event}
                       </h4>
                     </div>
-                    <p className="text-xs text-[#5C5955] leading-relaxed text-justify max-w-3xl">
+                    <p className="text-xs sm:text-sm text-[#5C5955] leading-relaxed text-justify max-w-3xl">
                       {item.description}
                     </p>
                     
                     {item.citations && item.citations.length > 0 && (
                       <div className="flex gap-1.5 items-center mt-1">
-                        <span className="text-[9px] font-mono uppercase text-[#8C8984]">CITED:</span>
+                        <span className="text-[10px] font-mono uppercase text-[#8C8984]">CITED:</span>
                         {item.citations.map((citeIdx) => (
                           <button
                             key={citeIdx}
                             onClick={() => handleCitationClick(citeIdx)}
-                            className="inline-flex h-3.5 px-1 items-center justify-center border border-[#D1CEC7] bg-white text-[9px] font-bold text-[#1A1A1A] font-mono hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
+                            className="inline-flex h-3.5 px-1 items-center justify-center border border-[#D1CEC7] bg-white text-[10px] font-bold text-[#1A1A1A] font-mono hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
                           >
                             [{citeIdx + 1}]
                           </button>
@@ -514,11 +514,11 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
         {/* Section 4: Controversy Analysis */}
         {report.conflictAnalysis && report.conflictAnalysis.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
               04. CONTROVERSY COMPARISON / DIVERGENT VIEWPOINTS
             </h3>
 
-            <p className="text-xs font-serif italic text-[#8C8984] mb-5">
+            <p className="text-xs sm:text-sm font-serif italic text-[#8C8984] mb-5">
               Consolidated major disagreements between prominent scientific publications or institutions, identifying blind spots in singular narrative channels.
             </p>
 
@@ -529,15 +529,15 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                   className="border border-[#D1CEC7] bg-[#F2EFE9] p-5 space-y-4"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="inline-block px-1 py-0.5 bg-[#E64833] text-white text-[9px] font-mono font-bold tracking-wider">
+                    <span className="inline-block px-1 py-0.5 bg-[#E64833] text-white text-[10px] font-mono font-bold tracking-wider">
                       CONTROVERSY
                     </span>
-                    <h4 className="text-xs font-serif font-bold text-[#1A1A1A]">
+                    <h4 className="text-sm font-serif font-bold text-[#1A1A1A]">
                       Controversy: {conf.topic}
                     </h4>
                   </div>
 
-                  <p className="text-xs font-serif text-[#1A1A1A] bg-white border border-[#D1CEC7] p-3 leading-relaxed">
+                  <p className="text-xs sm:text-sm font-serif text-[#1A1A1A] bg-white border border-[#D1CEC7] p-3 leading-relaxed">
                     <strong className="text-[#E64833] font-bold font-mono text-[10px] uppercase tracking-wider block mb-1">Description</strong>
                     {conf.description}
                   </p>
@@ -549,22 +549,22 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                         className="border border-[#D1CEC7] bg-white p-4 space-y-2 flex flex-col justify-between"
                       >
                         <div>
-                          <span className="text-[9px] font-mono font-bold text-[#8C8984] uppercase tracking-wider block">
+                          <span className="text-[10px] font-mono font-bold text-[#8C8984] uppercase tracking-wider block">
                             {viewItem.sourceName || "PERSPECTIVE"}
                           </span>
-                          <p className="text-xs font-serif italic text-[#3D3A36] leading-relaxed mt-1">
+                          <p className="text-xs sm:text-sm font-serif italic text-[#3D3A36] leading-relaxed mt-1">
                             &ldquo;{viewItem.view}&rdquo;
                           </p>
                         </div>
 
                         {viewItem.citations && viewItem.citations.length > 0 && (
                           <div className="text-right mt-3 pt-2 border-t border-[#D1CEC7] border-dashed">
-                            <span className="text-[9px] font-mono text-[#8C8984] uppercase mr-2">EVIDENCE:</span>
+                            <span className="text-[10px] font-mono text-[#8C8984] uppercase mr-2">EVIDENCE:</span>
                             {viewItem.citations.map((citeIdx) => (
                               <button
                                 key={citeIdx}
                                 onClick={() => handleCitationClick(citeIdx)}
-                                className="inline-flex h-4 px-1.5 items-center justify-center border border-[#D1CEC7] bg-[#FCFAF7] text-[9px] font-bold text-[#1A1A1A] font-mono hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
+                                className="inline-flex h-4 px-1.5 items-center justify-center border border-[#D1CEC7] bg-[#FCFAF7] text-[10px] font-bold text-[#1A1A1A] font-mono hover:bg-[#E64833] hover:text-white hover:border-[#E64833] transition-colors"
                               >
                                 [{citeIdx + 1}]
                               </button>
@@ -582,11 +582,11 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
 
         {/* Section 5: Sources Analysis Table */}
         <div>
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-[#8C8984] mb-5 border-b border-[#D1CEC7] pb-2 font-mono">
             05. SOURCE VERACITY INDEX / RECONSTRUCTED CITATIONS
           </h3>
 
-          <p className="text-xs font-serif italic text-[#8C8984] mb-6">
+          <p className="text-xs sm:text-sm font-serif italic text-[#8C8984] mb-6">
             The following table logs all retrieved web materials. Individual findings above correspond directly to the index markers below.
           </p>
 
@@ -607,20 +607,20 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
                       <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-[#1A1A1A] text-white font-serif italic text-xs font-semibold">
                         {src.chunkIndex + 1}
                       </span>
-                      <h4 className="text-xs font-serif font-bold text-[#1A1A1A] truncate pr-4">
+                      <h4 className="text-sm font-serif font-bold text-[#1A1A1A] truncate pr-4">
                         {src.title || "Untitled Web Resource"}
                       </h4>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
                       {/* Publish Date Badge */}
-                      <span className="inline-flex items-center gap-1 border border-[#D1CEC7] bg-[#FCFAF7] px-1.5 py-0.5 text-[9px] font-mono text-[#5C5955]">
+                      <span className="inline-flex items-center gap-1 border border-[#D1CEC7] bg-[#FCFAF7] px-1.5 py-0.5 text-[10px] font-mono text-[#5C5955]">
                         <Calendar className="h-2.5 w-2.5" />
                         {src.publishDate || "RECENT"}
                       </span>
 
                       {/* Credibility Badge */}
-                      <span className={`inline-flex items-center gap-1 border px-1.5 py-0.5 text-[9px] font-bold ${credibility.bg}`}>
+                      <span className={`inline-flex items-center gap-1 border px-1.5 py-0.5 text-[10px] font-bold ${credibility.bg}`}>
                         {credibility.label}
                       </span>
                     </div>
@@ -628,14 +628,14 @@ export default function ReportRenderer({ report, groundingSources, query }: Repo
 
                   {/* Body Details */}
                   <div className="space-y-3 mb-4">
-                    <p className="text-xs text-[#5C5955] leading-relaxed">
-                      <strong className="text-[#1A1A1A] font-bold uppercase tracking-wider text-[9px] font-mono block mb-1">CREDIBILITY AUDIT RATIONALE</strong>
+                    <p className="text-xs sm:text-sm text-[#5C5955] leading-relaxed">
+                      <strong className="text-[#1A1A1A] font-bold uppercase tracking-wider text-[10px] font-mono block mb-1">CREDIBILITY AUDIT RATIONALE</strong>
                       {src.credibilityRationale || "Retrieved and vetted via multi-source consensus, showing robust consistency with primary industry registers."}
                     </p>
 
                     {/* Excerpt Snippet */}
                     <div className="border-l-2 border-[#D1CEC7] bg-[#F5F2EC] p-3 italic">
-                      <p className="text-xs font-serif text-[#3D3A36] leading-relaxed text-justify">
+                      <p className="text-xs sm:text-sm font-serif text-[#3D3A36] leading-relaxed text-justify">
                         &ldquo;{src.snippet || "No exact quote snapshot returned, but the associated web address hosts key corroborating claims."}&rdquo;
                       </p>
                     </div>

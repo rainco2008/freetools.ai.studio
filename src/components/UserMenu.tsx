@@ -45,7 +45,7 @@ export function UserMenu() {
             <div className="flex items-start justify-between gap-2">
               <div className="flex items-center gap-2 font-bold text-[#E64833] uppercase tracking-wider">
                 <AlertTriangle className="w-4 h-4 shrink-0" />
-                <span>登录遇到限制</span>
+                <span>Sign-In Restricted</span>
               </div>
               <button 
                 onClick={clearAuthError} 
@@ -55,23 +55,23 @@ export function UserMenu() {
               </button>
             </div>
             
-            <p className="text-[11px] leading-relaxed text-[#5C5955]">
+            <p className="text-xs leading-relaxed text-[#5C5955]">
               {authError}
             </p>
 
             {/* Current Domain Helper */}
-            <div className="bg-[#F5F2EC] p-2 border border-[#D1CEC7] space-y-1">
-              <div className="text-[10px] text-[#8C8984] uppercase tracking-wider">当前需要授权的域名：</div>
+            <div className="bg-[#F5F2EC] p-2.5 border border-[#D1CEC7] space-y-1.5">
+              <div className="text-xs text-[#8C8984] uppercase tracking-wider font-bold">Domain to Authorize:</div>
               <div className="flex items-center justify-between gap-2 font-bold text-[#1A1A1A] select-all break-all">
-                <span>{window.location.hostname}</span>
+                <span className="text-xs">{window.location.hostname}</span>
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(window.location.hostname);
-                    alert(`已复制域名: ${window.location.hostname}\n请粘贴至 Firebase 控制台 Authentication -> Settings -> Authorized Domains`);
+                    alert(`Domain copied: ${window.location.hostname}\nPlease paste it in Firebase Console -> Authentication -> Settings -> Authorized Domains`);
                   }}
-                  className="px-2 py-0.5 bg-[#1A1A1A] text-white text-[9px] hover:bg-black uppercase tracking-wider shrink-0 cursor-pointer"
+                  className="px-2.5 py-1 bg-[#1A1A1A] text-white text-xs hover:bg-black uppercase tracking-wider shrink-0 cursor-pointer"
                 >
-                  复制域名
+                  Copy Domain
                 </button>
               </div>
             </div>
@@ -81,19 +81,19 @@ export function UserMenu() {
                 href={`https://console.firebase.google.com/u/0/project/${firebaseConfig.projectId}/authentication/settings`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-[#1A1A1A] text-white hover:bg-black transition-colors text-[10px] uppercase font-bold tracking-wider"
+                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-[#1A1A1A] text-white hover:bg-black transition-colors text-xs uppercase font-bold tracking-wider"
               >
-                <ExternalLink className="w-3 h-3" />
-                打开 Firebase 控制台设置
+                <ExternalLink className="w-3.5 h-3.5" />
+                Open Firebase Console
               </a>
               <button
                 onClick={() => {
                   clearAuthError();
                   loginWithGoogle();
                 }}
-                className="px-2.5 py-1.5 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#F5F2EC] text-[10px] uppercase font-bold tracking-wider cursor-pointer"
+                className="px-3 py-2 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#F5F2EC] text-xs uppercase font-bold tracking-wider cursor-pointer"
               >
-                重试
+                Retry
               </button>
             </div>
           </div>
@@ -102,7 +102,7 @@ export function UserMenu() {
         <button
           onClick={() => loginWithGoogle()}
           disabled={signingIn}
-          className="flex items-center gap-2 px-3 py-1.5 border border-[#1A1A1A] bg-white text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-all text-[11px] font-mono uppercase tracking-wider font-bold shadow-xs cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+          className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-[#1A1A1A] bg-white text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-all text-[11px] sm:text-xs font-mono uppercase tracking-wider font-bold shadow-xs cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {signingIn ? (
             <Loader2 className="w-3.5 h-3.5 animate-spin text-[#E64833]" />
@@ -133,10 +133,10 @@ export function UserMenu() {
         {oneTapSupported && (
           <button
             onClick={() => promptOneTap()}
-            className="hidden sm:flex items-center gap-1 px-2 py-1 text-[9px] font-mono text-[#8C8984] hover:text-[#1A1A1A] transition-colors uppercase tracking-wider cursor-pointer"
+            className="hidden sm:flex items-center gap-1 px-2.5 py-1 text-xs font-mono text-[#8C8984] hover:text-[#1A1A1A] transition-colors uppercase tracking-wider cursor-pointer"
             title="Google One Tap quick sign-in enabled"
           >
-            <Sparkles className="w-3 h-3 text-[#E64833]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#E64833]" />
             One Tap
           </button>
         )}

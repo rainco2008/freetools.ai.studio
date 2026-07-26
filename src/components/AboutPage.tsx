@@ -15,9 +15,9 @@ export default function AboutPage() {
       </div>
 
       {/* 2. Core Body Text with Editorial Column Layout */}
-      <div className="grid md:grid-cols-2 gap-10 font-serif text-sm sm:text-base text-[#1A1A1A] leading-relaxed">
+      <div className="grid md:grid-cols-2 gap-10 font-serif text-base sm:text-lg text-[#1A1A1A] leading-relaxed">
         <div className="space-y-6">
-          <p className="font-bold italic text-lg leading-relaxed text-[#E64833]">
+          <p className="font-bold italic text-xl leading-relaxed text-[#E64833]">
             The rapid democratization of artificial intelligence has led to a fragmented, paywall-heavy software market. freetools.ai.studio was established to solve two core friction points: discovery and accessibility.
           </p>
           <p>
@@ -38,7 +38,7 @@ export default function AboutPage() {
           <p>
             This led us to design our dual-purpose registry and alternative sandbox. It acts as an unbiased catalog auditing commercial marketing hype while functioning as a zero-cost workspace for Google Grounded search research and deep context document processing.
           </p>
-          <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#8C8984]">
+          <p className="font-sans text-sm font-bold uppercase tracking-wider text-[#8C8984]">
             — freetools.ai.studio core research group
           </p>
         </div>
@@ -48,30 +48,30 @@ export default function AboutPage() {
       <div className="border-y border-[#D1CEC7] py-10 grid sm:grid-cols-3 gap-8">
         <div className="space-y-2.5">
           <Compass className="h-5 w-5 text-[#E64833] stroke-[1.5]" />
-          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
+          <h4 className="text-base font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
             01. Auditing Ledger
           </h4>
-          <p className="text-xs text-[#5C5955] leading-relaxed font-serif">
+          <p className="text-sm text-[#5C5955] leading-relaxed font-serif">
             We systematically compile and dissect commercial SaaS pricing structures and hidden pitfalls, providing marketing-free technical audits.
           </p>
         </div>
 
         <div className="space-y-2.5">
           <Sparkles className="h-5 w-5 text-[#E64833] stroke-[1.5]" />
-          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
+          <h4 className="text-base font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
             02. Native Alternatives
           </h4>
-          <p className="text-xs text-[#5C5955] leading-relaxed font-serif">
+          <p className="text-sm text-[#5C5955] leading-relaxed font-serif">
             Unrestricted, credit-free workspaces built directly on Google Gemini to process critical workflows without requiring a subscription.
           </p>
         </div>
 
         <div className="space-y-2.5">
           <ShieldCheck className="h-5 w-5 text-[#E64833] stroke-[1.5]" />
-          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
+          <h4 className="text-base font-sans font-bold uppercase tracking-wider text-[#1A1A1A]">
             03. Enterprise Privacy
           </h4>
-          <p className="text-xs text-[#5C5955] leading-relaxed font-serif">
+          <p className="text-sm text-[#5C5955] leading-relaxed font-serif">
             All user queries, files, and generated templates are treated with enterprise confidentiality and completely deleted upon session termination.
           </p>
         </div>
