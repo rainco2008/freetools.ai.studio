@@ -29,14 +29,14 @@ interface FreeToolsHomeProps {
 
 const copy = {
   zh: {
-    badge: "永久免费 · 无需注册 · 浏览器直接使用",
+    badge: "免费使用 · 登录可选 · 浏览器优先",
     title: "常用工具，打开就能用。",
     intro:
       "开发、编码、格式转换、图片编辑与媒体处理工具集中在一个清晰、快速、注重隐私的工作区。",
     searchPlaceholder: "搜索 JSON、Base64、UUID、图片压缩、背景移除…",
     searchButton: "搜索工具",
-    privacy: "优先在本地浏览器处理",
-    noAccount: "无需账户或订阅",
+    privacy: "大多数工具在本地浏览器处理",
+    noAccount: "无需账户或付费订阅",
     developer: "开发工具",
     developerIntro: "面向开发者的编码、格式化、安全、网络和计算工具。",
     image: "图片工具",
@@ -48,18 +48,19 @@ const copy = {
     noResults: "没有找到匹配工具，请尝试更短或更通用的关键词。",
     openTool: "打开工具",
     local: "本地工具",
+    cloud: "云端 AI",
     allTools: "免费工具",
     groups: "功能分组",
   },
   en: {
-    badge: "ALWAYS FREE · NO SIGN-UP · RUNS IN YOUR BROWSER",
+    badge: "FREE TO USE · SIGN-IN OPTIONAL · BROWSER-FIRST",
     title: "Useful tools, ready when you are.",
     intro:
       "Developer, encoding, conversion, image, and media utilities in one clear, fast, privacy-minded workspace.",
     searchPlaceholder: "Search JSON, Base64, UUID, image compression, background removal…",
     searchButton: "Search tools",
-    privacy: "Browser-first local processing",
-    noAccount: "No account or subscription",
+    privacy: "Most tools process locally in your browser",
+    noAccount: "No account or paid subscription required",
     developer: "Developer Tools",
     developerIntro: "Encoding, formatting, security, network, and calculation tools for developers.",
     image: "Image Tools",
@@ -71,6 +72,7 @@ const copy = {
     noResults: "No matching tools found. Try a shorter or more general keyword.",
     openTool: "Open tool",
     local: "Local tool",
+    cloud: "Cloud AI",
     allTools: "Free tools",
     groups: "tool groups",
   },
@@ -274,7 +276,11 @@ export default function FreeToolsHome({ locale, initialQuery = "" }: FreeToolsHo
                         <Icon className="h-4 w-4" />
                       </span>
                       <span className="text-xs font-medium text-[#8C8984]">
-                        {tool.family === "developer" ? t.developer : t.image}
+                        {tool.runtime === "cloud"
+                          ? t.cloud
+                          : tool.family === "developer"
+                            ? t.developer
+                            : t.image}
                       </span>
                     </div>
                     <h3 className="mt-4 text-base font-bold text-[#1A1A1A]">{tool.name}</h3>

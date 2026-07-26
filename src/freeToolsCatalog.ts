@@ -13,6 +13,7 @@ export interface FreeToolEntry {
   keywords: string[];
   aliases: string[];
   href: string;
+  runtime: "local" | "cloud";
 }
 
 export const DEVELOPER_GROUPS = [
@@ -62,6 +63,15 @@ export const IMAGE_GROUPS = [
     },
     tools: ["viewer", "long-image", "video"],
   },
+  {
+    id: "creative",
+    label: { zh: "创意生成", en: "Creative Generation" },
+    description: {
+      zh: "使用 AI 根据花语创作图片",
+      en: "Create images with AI from symbolic flower meanings",
+    },
+    tools: ["bouquet-generator"],
+  },
 ] as const;
 
 const developerTools: FreeToolEntry[] = DEVELOPMENT_TOOL_CATALOG.map((tool) => {
@@ -84,6 +94,7 @@ const developerTools: FreeToolEntry[] = DEVELOPMENT_TOOL_CATALOG.map((tool) => {
     keywords: tool.features,
     aliases: groupAliases[tool.subCategory] || [],
     href: `#/developer?tool=${encodeURIComponent(id)}`,
+    runtime: "local",
   };
 });
 
@@ -102,6 +113,7 @@ const imageTools: FreeToolEntry[] = IMAGE_TOOL_CATALOG.map((tool) => {
     viewer: ["图片查看", "查看器"],
     "long-image": ["长图拼接", "拼长图"],
     video: ["视频转换", "转换视频"],
+    "bouquet-generator": ["AI 花束", "花束生成", "花语", "鲜花", "贺卡"],
   };
   return {
     id,
@@ -111,7 +123,11 @@ const imageTools: FreeToolEntry[] = IMAGE_TOOL_CATALOG.map((tool) => {
     description: tool.description,
     keywords: tool.features,
     aliases: aliases[id] || [],
-    href: `#/image?tool=${encodeURIComponent(id)}`,
+    href:
+      id === "bouquet-generator"
+        ? "#/bouquet-generator"
+        : `#/image?tool=${encodeURIComponent(id)}`,
+    runtime: id === "bouquet-generator" ? "cloud" : "local",
   };
 });
 
@@ -132,6 +148,7 @@ const popularIds = [
   "url-encoder",
   "qr-code",
   "regex-memo",
+  "bouquet-generator",
   "compressor",
   "convert",
   "remover",
