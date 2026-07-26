@@ -154,6 +154,24 @@ export default function LandingPage({
         </div>
         
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a
+            href="#/shot-easy"
+            className="flex flex-col justify-between border-2 border-[#E64833] bg-[#FFF4F0] p-5 hover:bg-[#FFEAE3] transition-all group hover:-translate-y-0.5"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="border border-[#E64833] bg-[#E64833] text-white px-1.5 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider">MEDIA TOOLS</span>
+                <Sparkles className="h-3.5 w-3.5 text-[#E64833]" />
+              </div>
+              <h4 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#E64833] transition-colors">ShotEasy Studio</h4>
+              <p className="text-[10px] text-[#8C8984] font-mono uppercase tracking-wider">React + Vite local-first media toolkit</p>
+              <p className="text-xs text-[#5C5955] leading-relaxed">Screenshot、Editor、Beautifier、图片转换、压缩、查看器、长图和视频工具集。</p>
+            </div>
+            <div className="pt-4 border-t border-[#F1B7A8] mt-4 flex items-center justify-between text-[9px] font-mono font-bold uppercase tracking-widest text-[#E64833]">
+              <span>Launch ShotEasy</span>
+              <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
           {STUDIO_APPS.map((app) => (
             <a
               key={app.id}
