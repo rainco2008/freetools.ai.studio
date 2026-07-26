@@ -1,6 +1,6 @@
 {
-  "name": "Free Tools AI Studio",
-  "description": "Enter queries to retrieve verifiable, source-backed, and structured intelligent research reports. Supports multi-page synthesis, fact vs. opinion classification, credibility analysis, and PDF export.",
+  "name": "Free Developer & Image Tools",
+  "description": "A no-sign-up browser toolbox with free developer, encoding, conversion, image, and media utilities.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
