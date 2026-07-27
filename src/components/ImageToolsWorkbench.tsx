@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { IMAGE_GROUPS, Locale } from "../freeToolsCatalog";
 import { IMAGE_TOOLS_DEFINITIONS } from "./image-tools/catalog";
+import ToolErrorBoundary from "./ToolErrorBoundary";
 
 import Beautifier from "@components/Beautifier.jsx";
 import Rounded from "@components/Rounded.jsx";
@@ -260,7 +261,15 @@ export default function ImageToolsWorkbench({
               <h2 className="mt-1 text-2xl font-black text-[#1A1A1A]">{currentToolName}</h2>
               <p className="mt-2 text-sm leading-6 text-[#6F6B65]">{currentToolDesc}</p>
             </div>
-            <div className="min-h-[520px]">{renderToolComponent()}</div>
+            <div className="min-h-[520px]">
+              <ToolErrorBoundary
+                locale={locale}
+                resetKey={currentToolId}
+                toolName={currentToolName}
+              >
+                {renderToolComponent()}
+              </ToolErrorBoundary>
+            </div>
           </main>
         </div>
       </div>
