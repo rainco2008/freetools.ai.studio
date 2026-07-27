@@ -187,7 +187,7 @@ export default function BouquetGenerator({ locale }: { locale: Locale }) {
     <div className="bg-[#FCFAF7] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
         <a
-          href="#/image"
+          href="/image"
           className="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#6F6B65] hover:text-[#E64833]"
         >
           <ArrowLeft className="h-4 w-4" />

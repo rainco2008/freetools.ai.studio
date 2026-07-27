@@ -20,11 +20,18 @@ app.use(express.json({ limit: "32kb" }));
 
 let geminiClient: GoogleGenAI | null = null;
 
+function getGeminiApiKey() {
+  // GOOGLE_API_KEY is the name used by Google AI Studio's server examples;
+  // keep GEMINI_API_KEY for backwards compatibility with this project.
+  return process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+}
+
 function getGeminiClient() {
-  if (!process.env.GEMINI_API_KEY) {
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) {
     throw new Error("GEMINI_API_KEY is not configured.");
   }
-  geminiClient ??= new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  geminiClient ??= new GoogleGenAI({ apiKey });
   return geminiClient;
 }
 
@@ -99,8 +106,7 @@ app.post("/api/bouquet/image", async (request, response) => {
     });
   } catch (error) {
     console.error("Bouquet image generation failed:", error);
-    const configurationMissing =
-      error instanceof Error && error.message.includes("GEMINI_API_KEY");
+    const configurationMissing = !getGeminiApiKey();
     response.status(configurationMissing ? 503 : 502).json({
       error: configurationMissing
         ? "Bouquet generation is not configured yet."

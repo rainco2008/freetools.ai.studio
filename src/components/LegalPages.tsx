@@ -62,7 +62,7 @@ export default function LegalPages({ page, locale }: LegalPagesProps) {
   const content = legalCopy[locale][page];
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <a href="#/" className="text-sm font-semibold text-[#E64833]">← freetools.ai.studio</a>
+      <a href="/" className="text-sm font-semibold text-[#E64833]">← freetools.ai.studio</a>
       <h1 className="mt-6 text-4xl font-black tracking-[-0.03em] text-[#1A1A1A]">{content.title}</h1>
       <p className="mt-2 text-sm text-[#8C8984]">{content.updated}</p>
       <div className="mt-10 space-y-8">
