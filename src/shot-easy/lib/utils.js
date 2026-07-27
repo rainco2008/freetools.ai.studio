@@ -19,6 +19,7 @@ class ColorThief {
 
 import { filesize } from 'filesize';
 import { Mimes } from './mimes';
+import backgroundConfig from './backgroundConfig';
 
 /**
  * Globaly uniqid in browser session lifecycle
