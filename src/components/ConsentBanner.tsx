@@ -59,7 +59,7 @@ export default function ConsentBanner({ locale }: { locale: Locale }) {
           <div>
             <h2 className="text-sm font-black text-[#1A1A1A]">{t.title}</h2>
             <p className="mt-1 max-w-2xl text-xs leading-5 text-[#6F6B65]">{t.body}</p>
-            <a href="#/privacy" className="mt-1.5 inline-flex text-xs font-semibold text-[#E64833] hover:underline">
+            <a href="/privacy" className="mt-1.5 inline-flex text-xs font-semibold text-[#E64833] hover:underline">
               {t.privacy}
             </a>
           </div>

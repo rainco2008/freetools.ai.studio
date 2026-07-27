@@ -18,8 +18,8 @@ interface RouteState {
   query: URLSearchParams;
 }
 
-function parseRoute(hash: string): RouteState {
-  const normalized = hash.replace(/^#/, "") || "/";
+function parseRoute(pathWithQuery: string): RouteState {
+  const normalized = pathWithQuery || "/";
   const [path, queryString = ""] = normalized.split("?");
   const query = new URLSearchParams(queryString);
 
@@ -68,7 +68,15 @@ function LoadingPage() {
 }
 
 export default function App() {
-  const [currentHash, setCurrentHash] = useState(window.location.hash || "#/");
+  const [currentLocation, setCurrentLocation] = useState(() => {
+    // Automatically rewrite legacy hash URLs (e.g. #/image) to standard history paths (/image)
+    if (window.location.hash) {
+      const legacyPath = window.location.hash.replace(/^#/, "") || "/";
+      window.history.replaceState({}, "", legacyPath);
+    }
+    return `${window.location.pathname}${window.location.search}`;
+  });
+
   const [locale, setLocale] = useState<Locale>(() => {
     const saved = localStorage.getItem("freetools_locale");
     if (saved === "zh" || saved === "en") return saved;
@@ -76,9 +84,11 @@ export default function App() {
   });
 
   useEffect(() => {
-    const handleHashChange = () => setCurrentHash(window.location.hash || "#/");
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    const handleLocationChange = () => {
+      setCurrentLocation(`${window.location.pathname}${window.location.search}`);
+    };
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
   }, []);
 
   useEffect(() => {
@@ -88,10 +98,10 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
-    trackPageView(`${window.location.pathname}${currentHash}`);
-  }, [currentHash]);
+    trackPageView(currentLocation);
+  }, [currentLocation]);
 
-  const routeState = useMemo(() => parseRoute(currentHash), [currentHash]);
+  const routeState = useMemo(() => parseRoute(currentLocation), [currentLocation]);
 
   const content = (() => {
     switch (routeState.route) {

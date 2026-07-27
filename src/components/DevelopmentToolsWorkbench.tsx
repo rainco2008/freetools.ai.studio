@@ -99,13 +99,15 @@ export default function DevelopmentToolsWorkbench({
 
   const selectTool = (toolId: string) => {
     setSelectedToolId(toolId);
-    window.location.hash = `#/developer?tool=${encodeURIComponent(toolId)}`;
+    const targetUrl = `/developer?tool=${encodeURIComponent(toolId)}`;
+    window.history.pushState({}, "", targetUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   };
 
   return (
     <section className="bg-[#FCFAF7] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
       <div className="mx-auto max-w-7xl">
-        <a href="#/" className="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#6F6B65] hover:text-[#E64833]">
+        <a href="/" className="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#6F6B65] hover:text-[#E64833]">
           <ArrowLeft className="h-4 w-4" />
           {t.back}
         </a>

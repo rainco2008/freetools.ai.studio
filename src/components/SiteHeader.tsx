@@ -54,23 +54,25 @@ export default function SiteHeader({
   const submitSearch = (event: FormEvent) => {
     event.preventDefault();
     const normalized = query.trim();
-    window.location.hash = normalized ? `#/?q=${encodeURIComponent(normalized)}` : "#/";
+    const targetUrl = normalized ? `/?q=${encodeURIComponent(normalized)}` : "/";
+    window.history.pushState({}, "", targetUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
     setSearchOpen(false);
     setMenuOpen(false);
   };
 
   const navItems = [
-    { id: "home", href: "#/", label: t.home, icon: Home },
+    { id: "home", href: "/", label: t.home, icon: Home },
     {
       id: "developer",
-      href: "#/developer",
+      href: "/developer",
       label: t.developer,
       count: TOOL_COUNTS.developer,
       icon: Code2,
     },
     {
       id: "image",
-      href: "#/image",
+      href: "/image",
       label: t.image,
       count: TOOL_COUNTS.image,
       icon: ImageIcon,
@@ -78,9 +80,9 @@ export default function SiteHeader({
   ] as const;
 
   return (
-    <header className="no-print sticky top-0 z-50 border-b border-[#D8D3CA] bg-[#FCFAF7]/95 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center gap-3 px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="flex min-w-0 shrink-0 items-center gap-2.5" aria-label="freetools.ai.studio">
+    <header className="sticky top-0 z-40 border-b border-[#D8D3CA] bg-[#FCFAF7]/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <a href="/" className="flex min-w-0 shrink-0 items-center gap-2.5" aria-label="freetools.ai.studio">
           <span className="grid h-8 w-8 place-items-center rounded-md bg-[#1A1A1A] font-serif text-sm font-black text-white">
             F
           </span>

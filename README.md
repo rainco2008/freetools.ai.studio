@@ -33,11 +33,62 @@ Configure optional cloud features in `.env`:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
+# GOOGLE_API_KEY is also supported for Google AI Studio deployments.
 GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
 VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
+The bouquet generator requires one of `GEMINI_API_KEY` or `GOOGLE_API_KEY` to
+be configured on the server. Never add the key to frontend code or commit it
+to the repository. If neither variable is set, the tool reports that bouquet
+generation is not configured.
+
 The Firebase web configuration and Google OAuth client ID are stored in `firebase-applet-config.json`. Add every production and preview hostname to Firebase Authentication authorized domains and to the Google OAuth client's authorized JavaScript origins.
+
+## Production deployment (Google Cloud Run)
+
+The production service runs on Google Cloud Run from the source in the GitHub
+repository [rainco2008/freetools.ai.studio](https://github.com/rainco2008/freetools.ai.studio).
+Cloud Run injects `PORT`; the Express server listens on `0.0.0.0` and requires
+Node.js 22.x. Deploy from the repository root with Google Cloud CLI:
+
+```bash
+gcloud run deploy freetools-ai-studio \
+  --source . \
+  --region REGION \
+  --allow-unauthenticated \
+  --set-env-vars NODE_ENV=production,GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
+```
+
+Store `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) in Google Secret Manager and inject
+it into Cloud Run. Do not put secrets in GitHub, `firebase-applet-config.json`,
+or frontend code. Configure these production variables:
+
+```env
+NODE_ENV=production
+PORT=provided by Cloud Run
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+`GOOGLE_API_KEY` may be used instead of `GEMINI_API_KEY`; if both are present,
+`GEMINI_API_KEY` takes precedence. `VITE_GA_MEASUREMENT_ID` is optional and
+enables Google Analytics 4 only after the visitor grants analytics consent.
+Never commit API keys or place them in frontend code. The AI bouquet endpoint
+is rate-limited to 5 requests per IP address per hour in the current server
+implementation.
+
+After deployment, add the production URL and every preview URL to Firebase
+Authentication's authorized domains and to the Google OAuth client's authorized
+JavaScript origins. Verify `/`, the developer and image workbenches,
+`/api/bouquet/image`, Google sign-in, and the terms/privacy routes before
+promoting the deployment.
+
+Firebase provides the web configuration and optional Google authentication. The
+public Firebase web settings and OAuth client ID are kept in
+`firebase-applet-config.json`; the server-side Gemini key must remain in Cloud
+Run Secret Manager configuration.
 
 ## Validation
 
@@ -49,14 +100,14 @@ npm run start
 
 ## Routes
 
-- `#/` — toolbox home and search
-- `#/developer` — developer tools workbench
-- `#/image` — image tools workbench
-- `#/bouquet-generator` — AI Bouquet Generator
-- `#/terms` — terms of use
-- `#/privacy` — privacy policy
+- `/` — toolbox home and search
+- `/developer` — developer tools workbench
+- `/image` — image tools workbench
+- `/bouquet-generator` — AI Bouquet Generator
+- `/terms` — terms of use
+- `/privacy` — privacy policy
 
-Legacy developer and image tool links are mapped to the new workbench routes.
+The application uses HTML5 History API routing (`pushState`). Express serves `index.html` for all unknown routes, while legacy hash URLs (`#/developer`, etc.) are automatically converted for backwards compatibility.
 
 ## License
 

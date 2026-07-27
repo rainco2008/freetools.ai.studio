@@ -183,7 +183,7 @@ export default function FreeToolsHome({ locale, initialQuery = "" }: FreeToolsHo
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-5 lg:grid-cols-2">
           <a
-            href="#/developer"
+            href="/developer"
             className="group flex min-h-72 flex-col justify-between rounded-lg border border-[#D8D3CA] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#1A1A1A] hover:shadow-lg sm:p-8"
           >
             <div>
@@ -212,7 +212,7 @@ export default function FreeToolsHome({ locale, initialQuery = "" }: FreeToolsHo
           </a>
 
           <a
-            href="#/image"
+            href="/image"
             className="group flex min-h-72 flex-col justify-between rounded-lg border border-[#D8D3CA] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#1A1A1A] hover:shadow-lg sm:p-8"
           >
             <div>
